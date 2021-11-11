@@ -1,20 +1,19 @@
 #include <iostream>
 
-class maze{
+class Maze{
 
     public:
     int row;
     int col;
     int density;
 
-    maze(int, int,int);
+    // maze(int, int,int);
 
     void inicializarMatriz();
     void laberinto();
     void drawMaze();
-};
 //constructor 
-maze::maze(int filas,int columnas, int densidad)
+    Maze(int filas,int columnas, int densidad)
 {
     row = filas;
     col = columnas;
@@ -22,3 +21,4 @@ maze::maze(int filas,int columnas, int densidad)
 }
 
 //Métodos
+};

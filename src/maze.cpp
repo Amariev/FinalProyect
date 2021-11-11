@@ -1,5 +1,5 @@
 #include <iostream>
-#include "maze.h"
+#include "../include/maze.h"
 
 const int filas = 29; //impar
 const int columnas = 19; //impar
@@ -13,7 +13,7 @@ int den = filas * columnas * densidad/4;
 using namespace std; 
 
 //NUEVO
-void inicializarMatriz()
+void Maze::inicializarMatriz()
 {    
 	for (int i = 0; i < filas; i++)
      {
@@ -30,7 +30,7 @@ void inicializarMatriz()
 		}
 	}
 }
-void laberinto ()
+void Maze::laberinto ()
 {
 	for (int i = 0; i < den; i++) {
 		int x = rand() % (columnas - 4) + 2; // 2 18 
@@ -53,7 +53,7 @@ void laberinto ()
 	}
 }
 
-void drawMaze()
+void Maze::drawMaze()
 {   //laberinto();
     for (int i = 0; i < filas; i++)
      {
