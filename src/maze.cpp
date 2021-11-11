@@ -1,6 +1,14 @@
 #include <iostream>
 #include "maze.h"
 
+// constructor 
+Maze::Maze(int filas,int columnas, int densidad)
+{
+    Maze::row = filas;
+    Maze::col = columnas;
+    Maze::density = densidad;
+}
+
 const int filas = 29; //impar
 const int columnas = 19; //impar
 const int densidad = 1; // 0 - 1
