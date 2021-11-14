@@ -1,5 +1,6 @@
-#ifndef PERSONAJE
-#define PERSONAJE
+#ifndef PERSONAJE_H
+#define PERSONAJE_H
+
 
 #include <iostream>
 

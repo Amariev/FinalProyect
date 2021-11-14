@@ -1,5 +1,5 @@
-#ifndef ENEMY
-#define ENEMY
+#ifndef ENEMY_H
+#define ENEMY_H
 
 #include "personaje.h"
 
