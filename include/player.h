@@ -6,6 +6,7 @@
 class Player : public Personaje {
 public:
     int level_score;
+    std::string name;
     int total_score;
     int bulletCount;
 
