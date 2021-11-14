@@ -1,34 +1,41 @@
-#include "../include/maze.h"
+#include <iostream>
+#include <time.h>
+#include "maze.h"
 
-const int filas = 29; //impar
-const int columnas = 19; //impar
-const int densidad = 1; // 0 - 1
-char matriz [filas][columnas];
+Maze::Maze (int columnas, int filas) :
 
-const int FParedes = densidad *4;
+   columnas{columnas},
+   filas{filas}
+{   
+    matriz = new int*[filas];
+    for (int indice = 0; indice < filas; ++indice)
+        matriz[indice] = new int[columnas]{};
+}
 
-int den = filas * columnas * densidad/4;
 
-//NUEVO
+//Métodos
 void Maze::inicializarMatriz()
 {    
+	//char matriz[filas][columnas];
 	for (int i = 0; i < filas; i++)
      {
 		for (int j = 0; j < columnas; j++) 
         {
 			if (i == 0 || j == 0 || i == filas - 1 || j == columnas - 1) 
             {
-				matriz[i][j] = 1;
+				matriz[i][j]= 1;
 			}
 			else 
             {
-				matriz[i][j] = 0; 
+				matriz[i][j]= 0; 
 			}
 		}
 	}
-}
+} 
+
 void Maze::laberinto ()
 {
+
 	for (int i = 0; i < den; i++) {
 		int x = rand() % (columnas - 4) + 2; // 2 18 
 		x = (x / 2) * 2;  // tiene que ser par 
@@ -51,7 +58,7 @@ void Maze::laberinto ()
 }
 
 void Maze::drawMaze()
-{   //laberinto();
+{   
     for (int i = 0; i < filas; i++)
      {
 		for (int j = 0; j < columnas; j++)
@@ -59,13 +66,13 @@ void Maze::drawMaze()
 			if (matriz[i][j] == 1) 
             {
 				char a= 178; 
-				cout << a <<a; 
+				std::cout << a <<a; 
 			}
 			if(matriz[i][j] == 0)
             {
-				cout << "  ";
+				std::cout << "  ";
 			}
 		}
-		cout << "\n"; 
+		std::cout << "\n"; 
 	}
 }

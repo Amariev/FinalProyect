@@ -1,22 +1,19 @@
 #include <iostream>
-using namespace std;
 
-class Maze {
+class Maze
+{
+    int columnas;
+    int filas;
+    // int densidad;
+    int **matriz;
 
 public:
-  int row;
-  int col;
-  int density;
-
-  // maze(int, int,int);
-
-  void inicializarMatriz();
-  void laberinto();
-  void drawMaze();
-  // constructor
-  Maze(int filas, int columnas, int densidad) {
-    row = filas;
-    col = columnas;
-    density = densidad;
-  }
+    Maze ();
+    Maze (int columnas, int filas);
+    void inicializarMatriz();
+    void laberinto();
+    void drawMaze();
+    // ~Maze (); 
+    int den = filas * columnas/4;
+    const int FParedes  = 8;
 };
