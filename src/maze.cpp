@@ -1,6 +1,6 @@
 #include <iostream>
 #include <time.h>
-#include "maze.h"
+#include "../include/maze.h"
 
 Maze::Maze (int columnas, int filas) :
 
