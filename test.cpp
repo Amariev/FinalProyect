@@ -43,9 +43,10 @@ int main(){
     return 0;
 }
 
-void dibujarLaberinto()
+void dibujarLaberinto() 
 {
-    Maze laberinto1(29, 19, 1);
+    srand(time(NULL));
+    Maze laberinto1(29, 19);
     laberinto1.inicializarMatriz();
     laberinto1.laberinto();
     laberinto1.drawMaze();
