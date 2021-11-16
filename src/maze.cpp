@@ -6,7 +6,7 @@ Maze::Maze(int **matrix_, int rows_, int columns_): matrix{matrix_}, row{rows_},
     }
 void Maze::laberinto ()
 {
-
+  srand(time(NULL));
   for (int i = 0; i < den; i++) {
 		int x = rand() % (col - 4) + 2; // 2 18
                 x = (x / 2) * 2;                // tiene que ser par 

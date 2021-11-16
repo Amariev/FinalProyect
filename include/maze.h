@@ -1,5 +1,6 @@
 #include <iostream>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
 
 class Maze {
 public:
