@@ -1,6 +1,8 @@
 #include "../include/board.h"
 #include "../include/enemy.h"
 
+#define RED "\e[0;31m"
+
 Board::Board(int columnas, int filas) : columnas{columnas}, filas{filas} {
   matriz = new int *[filas];
   for (int indice = 0; indice < filas; ++indice)
@@ -25,9 +27,9 @@ void Board::drawBoard() {
   for (int i = 0; i < filas; i++) {
     for (int j = 0; j < columnas; j++) {
       if (matriz[i][j] == 1) {
-        /* char a = '#';
-        std::cout << a << a; */
-        std::cout << "\u2588" << "\u2588";
+        char a = 178;
+        std::cout << RED << a << a;
+        // std::cout << RED "\u2588" << "\u2588";
       }
       if (matriz[i][j] == 0) {
         std::cout << "  ";
@@ -36,3 +38,4 @@ void Board::drawBoard() {
     std::cout << "\n";
   }
 }
+
