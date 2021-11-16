@@ -1,4 +1,6 @@
 #include <iostream>
+#include "board.h"
+#include "maze.h"
 
 enum GameState {
     MENU = 0,

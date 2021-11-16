@@ -38,7 +38,7 @@ void Board::drawBoard()
          {
 			if (matriz[i][j] == 1) 
             {
-				char a= 178; 
+				char a= '#'; 
 				std::cout << a <<a; 
 			}
 			if(matriz[i][j] == 0)

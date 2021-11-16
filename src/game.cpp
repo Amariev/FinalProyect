@@ -1,9 +1,8 @@
 #include "../include/game.h"
-#include <iostream>
 
-Game::Game()
+Game::Game() 
 {
-    this->state = GameState::MENU;
+    this->state = GameState::RUN;
 }
 
 Game::Game(int time_)
@@ -30,16 +29,31 @@ void Game::clear_screen()
 
 void Game::run()
 {
-    while (state != END) 
-    {
+    Board *board = new Board(29, 19);
+    board->inicializarMatriz();
+    int **matrix = board->getBoard();
+    int row = board->filas;
+    int col = board->columnas;
+    Maze *maze = new Maze(matrix, row, col);
+    maze->laberinto();
+    while (state != END) {
+        std::cout << this->state << std::endl;
         switch (this->state) 
         {
-            case GameState::MENU:
+            case GameState::MENU: {
+                clear_screen();
                 std::cout << "Bienvenido a aldkjfasldg" << std::endl;
-            case GameState::RUN:
-                
-            default:
                 break;
+            }
+            case GameState::RUN: {
+                clear_screen();
+                board->drawBoard();
+                break;
+            }
+
+            default:{
+                break;
+            }
         }
     }
 }
