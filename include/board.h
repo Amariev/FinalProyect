@@ -3,12 +3,12 @@
 class Board
 {
 public:
-    int columnas;
-    int filas;
-    int **matriz;
+    int cols;
+    int rows;
+    int **matrix;
 
     Board(int columnas, int filas);
     void inicializarMatriz();
-    int **getBoard() { return this->matriz; }
+    int **getBoard() { return this->matrix; }
     void drawBoard();
 };
