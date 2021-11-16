@@ -29,7 +29,7 @@ void Board::drawBoard() {
       if (matrix[i][j] == 1) {
         char a = 178;
         std::cout << RED << a << a;
-        // std::cout << RED "\u2588" << "\u2588";
+        // std::cout << RED "\u274E" ;
       }
       if (matrix[i][j] == 0) {
         std::cout << "  ";

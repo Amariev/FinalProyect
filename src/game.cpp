@@ -34,8 +34,8 @@ void Game::run()
     Board *board = new Board(29, 19);
     board->inicializarMatriz();
     int **matrix = board->getBoard();
-    int row = board->filas;
-    int col = board->columnas;
+    int row = board->rows;
+    int col = board->cols;
     Maze *maze = new Maze(matrix, row, col);
     maze->laberinto();
     Player *player1 = new Player(12, 14, '@');
