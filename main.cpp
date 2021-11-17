@@ -1,7 +1,7 @@
 #include "include/game.h"
 
-int main() {
-    //no se lo que hago por mi vida
+int main() 
+{
     Game *game = new Game();
     game->run();
     delete game;
