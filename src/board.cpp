@@ -1,5 +1,4 @@
 #include "../include/board.h"
-#include "../include/enemy.h"
 
 #define RED "\e[0;31m"
 
@@ -27,9 +26,9 @@ void Board::drawBoard() {
   for (int i = 0; i < filas; i++) {
     for (int j = 0; j < columnas; j++) {
       if (matriz[i][j] == 1) {
-        char a = 178;
-        std::cout << RED << a << a;
-        // std::cout << RED "\u2588" << "\u2588";
+        /* char a = 178;
+        std::cout << RED << a << a; */
+        std::cout << RED "\u274E";
       }
       if (matriz[i][j] == 0) {
         std::cout << "  ";
