@@ -1,6 +1,7 @@
 #ifndef PERSONAJE_H
 #define PERSONAJE_H
 
+
 #include <iostream>
 
 class Personaje
@@ -10,22 +11,22 @@ class Personaje
         int col;
         int lives;
         int speed;
-        char symbol;
+        std::string symbol;
 
       public:
         Personaje();
-        Personaje(int row, int col, char symbol, int lives = 1,
+        Personaje(int row, int col, std::string symbol, int lives = 1,
                   int speed = 1);
 
         Personaje(Personaje &o);
 
-        void setSymbol(char);
+        void setSymbol(std::string);
         void setRow(int);
         void setCol(int);
         void setSpeed(int);
         void setLives(int);
 
-        char getSymbol();
+        std::string getSymbol();
         int getRow();
         int getCol();
         int getSpeed();

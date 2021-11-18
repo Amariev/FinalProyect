@@ -13,28 +13,20 @@ Level::Level(int number, int width, int height)
 }
 
 
-/*
 
-    Player *player1 = new Player(12, 14, '@');
-    std::cout << "Ingresa tu nombre: ";
-    std::cin >> player1->name;
-
-   ******* Level *level = new Level(parametros)
-*/
 void Level::load_level() 
 {
     this->number = 1;
-    // load_player();
-    Player player(2,2,'#');
-    Enemy enemy(5,5,'t');
+    load_player();
+    Enemy enemy(5,5,"\u2620");
 
-    this->board = Board(width, height, player, enemy);
+    this->board = new Board(width, height, player, enemy);
 
-    this->board.inicializarMatriz();
+    this->board->inicializarMatriz();
 
-    int **matrix = board.getBoard();
-    int row = board.rows;
-    int col = board.cols;
+    int **matrix = board->getBoard();
+    int row = board->rows;
+    int col = board->cols;
 
     Maze *maze = new Maze(matrix, row, col);
     maze->laberinto();
@@ -53,8 +45,17 @@ void Level::check_end_level()
     
 } 
 
+void Level::load_player()
+{
+    // player->setRow((this->height)-1);
+    // player->setCol(1);
+    player = new Player(this->height, 1, "\u2689");
+
+}
+
 void Level::draw()
 {
     // std::cout << "\033[2J\033[1;1H";
-    board.drawBoard();
+    board->drawBoard();
+    player->imprimirAtributos(); 
 }

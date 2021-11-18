@@ -1,7 +1,7 @@
 #include "../include/player.h"
 
 Player::Player(){}
-Player::Player(int row, int col, char symbol, 
+Player::Player(int row, int col, std::string symbol, 
         int bulletCount,int lives , int speed, 
         int level_score, 
         int total_score):Personaje(row, col, symbol, lives, speed)

@@ -2,7 +2,7 @@
 
 // class Enemy
 Enemy::Enemy(){}
-Enemy::Enemy(int row, int col, char symbol, int lives, bool alive, int speed) : Personaje(row, col, symbol, lives, speed){
+Enemy::Enemy(int row, int col, std::string symbol, int lives, bool alive, int speed) : Personaje(row, col, symbol, lives, speed){
     Enemy::alive = alive;
 };
 

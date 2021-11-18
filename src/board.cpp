@@ -2,12 +2,12 @@
 
 Board::Board(){}
 
-Board::Board(int columnas, int filas, Player _player, Enemy _enemy) : cols{columnas}, rows{filas} {
+Board::Board(int columnas, int filas, Player *_player, Enemy _enemy) : cols{columnas}, rows{filas} {
   matrix = new int *[filas];
   for (int index = 0; index < filas; ++index)
     matrix[index] = new int[columnas]{};
   
-  this -> player = _player;
+  this -> player = *_player;
   this -> enemy = _enemy;
 }
 

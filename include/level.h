@@ -1,6 +1,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include "../ext/conio.h"
 #include "../include/maze.h"
 #include "../include/board.h"
 #include "../include/player.h"
@@ -16,7 +17,8 @@ class Level
         int width;
         int height;
         int time;
-        Board board;
+        Board *board = new Board;
+        Player *player = new Player;
 
         Level();
         Level (int number, int width, int height);
@@ -29,5 +31,4 @@ class Level
         // void complete();
         void draw();
 };
-
 #endif

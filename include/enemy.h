@@ -10,9 +10,8 @@ class Enemy : public Personaje {
     public:
         Enemy();
 
-        Enemy(int row, int col, char symbol, int lives = 1, bool alive = true,
+        Enemy(int row, int col, std::string symbol, int lives = 1, bool alive = true,
             int speed = 1);
-
         Enemy(Enemy &o);
 
         bool is_alive();

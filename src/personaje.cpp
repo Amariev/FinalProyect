@@ -1,8 +1,13 @@
 #include "../include/personaje.h"
 
 // constructor
-Personaje::Personaje(){}
-Personaje::Personaje(int row, int col, char symbol, int lives,
+
+Personaje::Personaje()
+{
+    
+}
+
+Personaje::Personaje(int row, int col, std::string symbol, int lives,
                      int speed) { // Personaje::row = row;
   this -> row = row;
   // Personaje::row = row;
@@ -22,9 +27,9 @@ Personaje::Personaje(Personaje &o)
     symbol = o.symbol;
 }
 
-char Personaje::getSymbol() { return symbol; }
+std::string Personaje::getSymbol() { return symbol; }
 
-void Personaje::setSymbol(char run) { symbol = run; }
+void Personaje::setSymbol(std::string run) { symbol = run; }
 
 void Personaje::setRow(int row) { Personaje::row = row; }
 
