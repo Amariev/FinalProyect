@@ -3,13 +3,22 @@
 // constructor
 Personaje::Personaje(int row, int col, char symbol, int lives,
                      int speed) { // Personaje::row = row;
-  Personaje::row = row;
-  // this->row = row;
-  Personaje::col = col;
-  Personaje::symbol = symbol;
+  this -> row = row;
+  // Personaje::row = row;
+  this -> col = col;
+  this -> symbol = symbol;
 
-  Personaje::lives = lives;
-  Personaje::speed = speed;
+  this -> lives = lives;
+  this -> speed = speed;
+}
+
+Personaje::Personaje(Personaje &o)
+{
+    row = o.row;
+    col = o.col;
+    lives = o.lives;
+    speed = o.speed;
+    symbol = o.symbol;
 }
 
 char Personaje::getSymbol() { return symbol; }

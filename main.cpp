@@ -1,6 +1,6 @@
 #include "include/game.h"
 
-int main()
+int main() 
 {
     Game *game = new Game();
     game->run();
