@@ -14,7 +14,9 @@ public:
     Enemy enemy;
 
     Board(int columnas, int filas, Player _player, Enemy _enemy);
+    ~Board();
     void inicializarMatriz();
     int **getBoard() { return this->matrix; }
     void drawBoard();
+    
 };
