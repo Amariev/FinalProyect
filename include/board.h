@@ -1,3 +1,6 @@
+#ifndef BOARD_H
+#define BOARD_H
+
 #include <iostream>
 #include "../include/player.h"
 #include "../include/enemy.h"
@@ -15,7 +18,10 @@ public:
 
     Board();
     Board(int columnas, int filas, Player _player, Enemy _enemy);
+    ~Board();
     void inicializarMatriz();
     int **getBoard() { return this->matrix; }
     void drawBoard();
+    
 };
+#endif

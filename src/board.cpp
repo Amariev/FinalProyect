@@ -24,6 +24,14 @@ void Board::inicializarMatriz() {
   }
 }
 
+Board::~Board() {
+    for (int i= 0 ; i < rows; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
+
 void Board::drawBoard() {
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < cols; j++) {

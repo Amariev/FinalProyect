@@ -1,3 +1,6 @@
+#ifndef LEVEL_H
+#define LEVEL_H
+
 #include <iostream>
 
 #include "../include/maze.h"
@@ -26,3 +29,4 @@ class Level
       // void complete();
       void draw();
 };
+#endif

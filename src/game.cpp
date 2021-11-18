@@ -1,5 +1,7 @@
 #include "../include/game.h"
 #include "../include/player.h"
+#include "../include/level.h"
+
 #include <ctime>
 
 Game::Game() 

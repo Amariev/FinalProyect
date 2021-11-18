@@ -1,3 +1,6 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include <iostream>
 #include "level.h"
 #include "menu.h"
@@ -27,3 +30,4 @@ class Game
         GameState state;
         void clear_screen();
 };
+#endif
