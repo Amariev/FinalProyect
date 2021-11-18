@@ -1,3 +1,6 @@
+#ifndef BOARD_H
+#define BOARD_H
+
 #include <iostream>
 #include "../include/player.h"
 #include "../include/enemy.h"
@@ -20,3 +23,4 @@ public:
     void drawBoard();
     
 };
+#endif

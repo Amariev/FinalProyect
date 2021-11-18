@@ -1,7 +1,6 @@
 #ifndef PERSONAJE_H
 #define PERSONAJE_H
 
-
 #include <iostream>
 
 class Personaje

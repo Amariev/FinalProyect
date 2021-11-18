@@ -1,3 +1,6 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include <iostream>
 #include "board.h"
 #include "maze.h"
@@ -26,3 +29,4 @@ class Game
         GameState state;
         void clear_screen();
 };
+#endif

@@ -1,3 +1,6 @@
+#ifndef MAZE_H
+#define MAZE_H
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -14,4 +17,4 @@ public:
     void laberinto();
     int ** getMaze();
 };
-
+#endif

@@ -1,3 +1,6 @@
+#ifndef LEVEL_H
+#define LEVEL_H
+
 #include <iostream>
 
 class Level
@@ -18,3 +21,4 @@ class Level
       // void complete();
       void draw();
 };
+#endif
