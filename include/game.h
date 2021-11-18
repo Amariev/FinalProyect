@@ -1,17 +1,18 @@
 #include <iostream>
-#include "board.h"
-#include "maze.h"
+#include "level.h"
+#include "menu.h"
 
 enum GameState {
     MENU = 0,
     RUN = 1,
-    END = 2, 
+    END = 2,
 }; 
 
 class Game
 {
     public:
         int time;
+        Level level;
 
         Game();
         ~Game();

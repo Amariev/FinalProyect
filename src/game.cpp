@@ -4,7 +4,8 @@
 
 Game::Game() 
 {
-    this->state = GameState::RUN;
+    this->state = GameState::MENU;
+    Level level;
 }
 
 Game::Game(int time_)
@@ -31,32 +32,40 @@ void Game::clear_screen()
 
 void Game::run() 
 {
-    Player player(2,2,'#');
-    Enemy enemy(5,5,'t');
-    Board *board = new Board(29, 19, player, enemy);
-    board->inicializarMatriz();
-    int **matrix = board->getBoard();
-    int row = board->rows;
-    int col = board->cols;
-    Maze *maze = new Maze(matrix, row, col);
-    maze->laberinto();
-    Player *player1 = new Player(12, 14, '@');
-    std::cout << "Ingresa tu nombre: ";
-    std::cin >> player1->name;
+    level.load_level();
+    Menu *const mainMenu = new MainMenu();
+    auto menuState = mainMenu;
     while (state != END) {
-        std::cout << this->state << std::endl;
         switch (this->state) 
         {
             case GameState::MENU: {
                 clear_screen();
-                std::cout << "Bienvenido a aldkjfasldg" << std::endl;
+                while (menuState->getMenuState() != OUT)
+                {
+                    switch (menuState->getMenuState())
+                    {
+                        case MenuState::MAIN_MENU: {
+                            menuState = mainMenu;
+                            menuState->setMenuState(MenuState::MAIN_MENU);
+                            menuState->run();
+                        }
+
+                        case MenuState::PLAY: {
+                            this->state = GameState::RUN;
+                            menuState->setMenuState(MenuState::OUT);
+                            level.load_level();
+                        }
+
+                        default: {
+                            break;
+                        }
+                    }
+                }
                 break;
             }
             case GameState::RUN: {
                 clear_screen();
-                std::cout << "Bienvenido al juego " << player1->name << std::endl;
-                board->drawBoard();
-                player1->imprimirAtributos();
+                level.draw();
                 break;
             }
 

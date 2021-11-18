@@ -13,6 +13,7 @@ public:
     Player player;
     Enemy enemy;
 
+    Board();
     Board(int columnas, int filas, Player _player, Enemy _enemy);
     void inicializarMatriz();
     int **getBoard() { return this->matrix; }

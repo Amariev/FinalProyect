@@ -28,9 +28,9 @@ void Board::drawBoard() {
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < cols; j++) {
       if (matrix[i][j] == 1) {
-        char a = 178;
-        std::cout << RED << a << a;
-        // std::cout << RED "\u274E" ;
+        /* char a = 178;
+        std::cout << RED << a << a; */
+        std::cout << RED "\u274E" ;
       }
       if (matrix[i][j] == 0) {
         std::cout << "  ";

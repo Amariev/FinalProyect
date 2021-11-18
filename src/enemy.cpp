@@ -20,7 +20,6 @@ void Enemy::set_alive(bool alive)
 {
     this->alive = alive;
 }
-
 void Enemy::imprimirAtributos()
 {
   std::cout << "Row: " << row << std::endl;
