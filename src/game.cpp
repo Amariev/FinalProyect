@@ -1,5 +1,7 @@
 #include "../include/game.h"
 #include "../include/player.h"
+#include "../include/level.h"
+
 #include <ctime>
 
 Game::Game() 
@@ -30,19 +32,15 @@ void Game::clear_screen()
 }
 
 void Game::run() 
-{
-    Player player(2,2,'#');
-    Enemy enemy(5,5,'t');
-    Board *board = new Board(29, 19, player, enemy);
-    board->inicializarMatriz();
-    int **matrix = board->getBoard();
-    int row = board->rows;
-    int col = board->cols;
-    Maze *maze = new Maze(matrix, row, col);
-    maze->laberinto();
+{  
+    
+   Level *level = new Level(1,2,3);
+   level ->load_level();
+    
     Player *player1 = new Player(12, 14, '@');
     std::cout << "Ingresa tu nombre: ";
     std::cin >> player1->name;
+
     while (state != END) {
         std::cout << this->state << std::endl;
         switch (this->state) 
@@ -54,9 +52,14 @@ void Game::run()
             }
             case GameState::RUN: {
                 clear_screen();
+                /*
                 std::cout << "Bienvenido al juego " << player1->name << std::endl;
-                board->drawBoard();
+                // error level ...
+                 // Level *level = new Level(1,2,3);
+                 // level ->load_level();
+               // board->drawBoard();
                 player1->imprimirAtributos();
+                */
                 break;
             }
 
