@@ -1,5 +1,6 @@
 #include "../include/board.h"
 
+Board::Board(){}
 
 Board::Board(int columnas, int filas, Player _player, Enemy _enemy) : cols{columnas}, rows{filas} {
   matrix = new int *[filas];
@@ -8,6 +9,14 @@ Board::Board(int columnas, int filas, Player _player, Enemy _enemy) : cols{colum
   
   this -> player = _player;
   this -> enemy = _enemy;
+}
+
+Board::~Board() {
+    /* for (int i= 0 ; i < rows; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix; */
 }
 
 // Métodos
@@ -22,14 +31,6 @@ void Board::inicializarMatriz() {
       }
     }
   }
-}
-
-Board::~Board() {
-    for (int i= 0 ; i < rows; i++)
-    {
-        delete[] matrix[i];
-    }
-    delete[] matrix;
 }
 
 void Board::drawBoard() {
