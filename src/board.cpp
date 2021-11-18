@@ -1,12 +1,13 @@
 #include "../include/board.h"
-#include "../include/enemy.h"
 
-#define RED "\e[0;31m"
 
-Board::Board(int columnas, int filas) : cols{columnas}, rows{filas} {
+Board::Board(int columnas, int filas, Player _player, Enemy _enemy) : cols{columnas}, rows{filas} {
   matrix = new int *[filas];
   for (int index = 0; index < filas; ++index)
     matrix[index] = new int[columnas]{};
+  
+  this -> player = _player;
+  this -> enemy = _enemy;
 }
 
 // Métodos

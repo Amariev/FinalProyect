@@ -1,5 +1,6 @@
 #include "../include/player.h"
 
+Player::Player(){}
 Player::Player(int row, int col, char symbol, 
         int bulletCount,int lives , int speed, 
         int level_score, 

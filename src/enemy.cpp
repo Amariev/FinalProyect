@@ -1,6 +1,7 @@
 #include "../include/enemy.h"
 
 // class Enemy
+Enemy::Enemy(){}
 Enemy::Enemy(int row, int col, char symbol, int lives, bool alive, int speed) : Personaje(row, col, symbol, lives, speed){
     Enemy::alive = alive;
 };

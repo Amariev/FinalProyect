@@ -1,6 +1,7 @@
 #include "../include/personaje.h"
 
 // constructor
+Personaje::Personaje(){}
 Personaje::Personaje(int row, int col, char symbol, int lives,
                      int speed) { // Personaje::row = row;
   this -> row = row;
