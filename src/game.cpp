@@ -31,7 +31,9 @@ void Game::clear_screen()
 
 void Game::run() 
 {
-    Board *board = new Board(29, 19);
+    Player player(2,2,'#');
+    Enemy enemy(5,5,'t');
+    Board *board = new Board(29, 19, player, enemy);
     board->inicializarMatriz();
     int **matrix = board->getBoard();
     int row = board->rows;

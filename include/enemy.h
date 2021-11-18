@@ -8,6 +8,7 @@ class Enemy : public Personaje {
         bool alive;
 
     public:
+        Enemy();
 
         Enemy(int row, int col, char symbol, int lives = 1, bool alive = true,
             int speed = 1);

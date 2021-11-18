@@ -14,6 +14,7 @@ class Personaje
         char symbol;
 
       public:
+        Personaje();
         Personaje(int row, int col, char symbol, int lives = 1,
                   int speed = 1);
 

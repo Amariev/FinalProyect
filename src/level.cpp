@@ -1,4 +1,5 @@
-/* #include "../include/level.h"
+/*
+#include "../include/level.h"
 #include "../include/maze.h"
 #include "../include/player.h"
 
@@ -24,4 +25,5 @@ void Level::change_level()
 void Level::check_end_level()
 {
     
-} */
+} 
+*/
