@@ -14,7 +14,10 @@ class Personaje
         char symbol;
 
       public:
-        Personaje(int row, int col, char symbol, int lives = 1, int speed = 1);
+        Personaje(int row, int col, char symbol, int lives = 1,
+                  int speed = 1);
+
+        Personaje(Personaje &o);
 
         void setSymbol(char);
         void setRow(int);

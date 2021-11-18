@@ -1,5 +1,4 @@
 #include "../include/board.h"
-#include "../include/enemy.h"
 
 #define RED "\e[0;31m"
 
