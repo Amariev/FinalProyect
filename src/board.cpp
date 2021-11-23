@@ -8,19 +8,19 @@ Board::Board(int _cols, int _rows) : cols{_cols}, rows{_rows} {
 
     for (int i = 0; i < _rows+2; ++i)
         matrix[i] = new int[_cols+2]{};
-        
+
     // maze.laberinto(rows+2, cols+2, matrix);
     generateMatrix();
 }
 
 Board::~Board() {
-    // if(matrix!=nullptr){
-    //    for (int i= 0 ; i < rows; i++)
-    //    {
-    //      delete[] matrix[i];
-    //    }
-    //   delete[] matrix; 
-    // }
+    /* if(matrix!=nullptr){
+       for (int i= 0 ; i < rows; i++)
+       {
+         delete[] matrix[i];
+       }
+      delete[] matrix; 
+    } */
 }
 
 // Métodos
