@@ -4,18 +4,17 @@
 #include <iostream>
 #include <ctime>
 
-struct Coord{int X, Y;
-};
+struct Coord{int X, Y;};
 enum Directions {UP=1, DOWN, RIGHT, LEFT, STOP};
 
 class Personaje
 {
     protected:
-        Coord pos;
         int lives;
         int speed;
         std::string symbol;
         Directions direction;
+        Coord pos;
 
     public:
         Personaje();
@@ -25,16 +24,16 @@ class Personaje
         Personaje(Personaje &o);
 
         void setSymbol(std::string);
-        void setPos(Coord);
         void setSpeed(int);
         void setLives(int);
         void setDirection(Directions);
+        void setPos(Coord);
 
         std::string getSymbol();
-        Coord getPos();
         int getSpeed();
         int getLives();
         Directions getDirection();
+        Coord getPos();
 
         void move();
         virtual void printAttributes();

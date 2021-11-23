@@ -25,8 +25,6 @@ class NormalEnemy : public Enemy {
     public:
 
         NormalEnemy(Coord, char, int lives, bool alive, int speed);
-
-        void move();
 };
 
 #endif

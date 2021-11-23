@@ -14,13 +14,13 @@ Board::Board(int _cols, int _rows) : cols{_cols}, rows{_rows} {
 }
 
 Board::~Board() {
-    /* if(matrix!=nullptr){
-       for (int i= 0 ; i < rows; i++)
+    if(matrix!=nullptr){
+       /* for (int i= 0 ; i < rows; i++)
        {
          delete[] matrix[i];
        }
-      delete[] matrix; 
-    } */
+      delete[] matrix;  */
+    }
 }
 
 // Métodos

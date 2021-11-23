@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "personaje.h"
+#include "../ext/conio.h"
 
 class Player : public Personaje {
 public:
@@ -11,6 +12,9 @@ public:
     int bulletCount;
 
     Player();
+
+    void input();
+
     Player(Coord pos, std::string symbol, int bulletCount = 5, int lives = 1,
            int speed = 1, int level_score = 0, int total_score = 0);
     void printAttributes();

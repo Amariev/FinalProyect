@@ -11,6 +11,27 @@ Player::Player(Coord pos, std::string symbol,
     this->level_score = level_score;
     this->total_score = total_score;
 };
+
+void Player::input(){
+    if (kbhit()) {
+        switch (getch()) {
+            case 'w': case 'W': case 'i': case 'I':
+                direction = UP;
+                break;
+            case 's': case 'S': case 'k': case 'K':
+                direction = DOWN;
+                break;
+            case 'a': case 'A': case 'j': case 'J':
+                direction = LEFT;
+                break;
+            case 'd': case 'D': case 'l': case 'L':
+                direction = RIGHT;
+                break;
+        }
+    }
+    move();
+}
+
 void Player::printAttributes()
 {
     Personaje::printAttributes();

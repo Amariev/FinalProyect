@@ -43,7 +43,3 @@ void Enemy::printAttributes()
 // class Normal Enemy
 
 NormalEnemy::NormalEnemy(Coord _pos, char _symbol, int lives = 1, bool alive = true, int speed = 1):Enemy(pos, symbol, lives, alive, speed){}
-
-void NormalEnemy::move(){
-       
-}
