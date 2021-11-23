@@ -14,7 +14,6 @@ class Board
 public:
     int cols;
     int rows;
-    //Maze maze;
     int **matrix;
     Player player;
     Enemy enemy;

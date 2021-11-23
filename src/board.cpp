@@ -8,9 +8,9 @@ Board::Board(int _cols, int _rows) : cols{_cols}, rows{_rows} {
 
     for (int i = 0; i < _rows+2; ++i)
         matrix[i] = new int[_cols+2]{};
-  
-    generateMatrix();
+        
     maze.laberinto(rows+2, cols+2, matrix);
+    generateMatrix();
 }
 
 Board::~Board() {
@@ -40,7 +40,7 @@ void Board::generateMatrix() {
 void Board::assignBox(Coord pos, int value){
   for (int i = 1; i < (rows + 2) - 1; i++){
     for (int j = 1 ; j < (cols + 2) - 1; j++){
-      if( i == pos.X && j == pos.Y){
+      if( i == pos. && j == pos.Y){
         matrix[i][j]= value;
       }
     }
@@ -72,7 +72,9 @@ void Board::drawBoard(){
 
 // void for (i){for(j){if(matrix[i][j] == 1 && player.pos.x == i && player.pos.y == j){ entonces direction = STOP}}
 
-//POBAR
+//PROBAR
+
+
 void Board::halt(Coord pos){
   for (int i = 0; i < rows +2; i++){
     for (int j = 0; j < cols+ 2; j++){
@@ -86,5 +88,5 @@ void Board::halt(Coord pos){
 void Board::update(){
   assignBox( player.getPos(), 2);
   assignBox( enemy.getPos(), 3);
-  halt( player.getPos());
+  //halt( player.getPos());
 }
