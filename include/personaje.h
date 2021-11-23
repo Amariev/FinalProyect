@@ -1,10 +1,11 @@
 #ifndef PERSONAJE_H
 #define PERSONAJE_H
 
-
 #include <iostream>
+#include <ctime>
 
 struct Coord{int X, Y; };
+enum Directions {UP=1, DOWN, RIGHT, LEFT, IDLE};
 
 class Personaje
 {
@@ -13,6 +14,7 @@ class Personaje
         int lives;
         int speed;
         std::string symbol;
+        Directions direction;
 
       public:
         Personaje();
@@ -31,6 +33,7 @@ class Personaje
         int getSpeed();
         int getLives();
 
+        void move();
         virtual void printAttributes();
 };
 

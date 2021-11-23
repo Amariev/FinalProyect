@@ -15,3 +15,21 @@ void Player::printAttributes()
     Personaje::printAttributes();
     std::cout << "Bullet: " << bulletCount << std::endl;
 }
+void Personaje::move(){
+    switch (direction) {
+    case Directions::UP:
+        pos.Y -= speed; 
+        break;
+    case Directions::DOWN:
+        pos.Y += speed; 
+        break;
+    case Directions::RIGHT:
+        pos.X += speed; 
+        break;
+    case Directions::LEFT:
+        pos.X -= speed;
+        break;
+    default:
+        break;
+    }
+}

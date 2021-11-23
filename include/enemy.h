@@ -14,16 +14,19 @@ class Enemy : public Personaje {
             int speed = 1);
         Enemy(Enemy &o);
 
-        bool is_alive();
-        void set_alive(bool alive);
+        bool isAlive();
+        void setAlive(bool alive);
         void printAttributes();
+        void setRandomDirection();
 
 };
 
-class Normal_Enemy : public Enemy {
+class NormalEnemy : public Enemy {
     public:
 
-        Normal_Enemy(Coord pos, char symbol, int lives = 1, bool alive = true, int speed = 1);
+        NormalEnemy(Coord, char, int lives, bool alive, int speed);
+
+        void move();
 };
 
 #endif

@@ -3,17 +3,12 @@
 
 #include "personaje.h"
 
-enum Directions {UP=1, DOWN, RIGHT, LEFT, IDLE};
-
 class Player : public Personaje {
 public:
     int level_score;
     std::string name;
     int total_score;
     int bulletCount;
-    int width;
-    int height;
-    Directions direction;
 
     Directions getDirection();
     void setDirection(Directions);
