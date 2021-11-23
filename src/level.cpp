@@ -7,6 +7,7 @@ Level::Level(int _number)
 {
     this->number = _number;
     load_level();
+
 }
 
 Level::~Level(){
@@ -16,12 +17,9 @@ Level::~Level(){
 void Level::load_level() 
 {
     this->number = 1;
-
     this->board = Board(5, 5);
-
     board.generateMatrix();
 }
-
 
 //cambio de nivel
 void Level::change_level()

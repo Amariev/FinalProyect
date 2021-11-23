@@ -39,7 +39,7 @@ void Board::generateMatrix() {
 // void Board::assignBox(Coord pos, int value){
 //   for (int i = 1; i < (rows + 2) - 1; i++){
 //     for (int j = 1 ; j < (cols + 2) - 1; j++){
-//       if( i == pos. && j == pos.Y){
+//       if( i == pos.Y && j == pos.X){
 //         matrix[i][j]= value;
 //       }
 //     }
@@ -53,7 +53,8 @@ void Board::drawBoard(){
     for(int j = 0; j < cols + 2; j++){
       switch (matrix[i][j]) {
         case 1:
-          std::cout << "\u274E";
+        //   std::cout << "\u274E";
+          std::cout << ":3";
           break;
         case 2:
           std::cout << BLUE << player.getSymbol() << NC;
