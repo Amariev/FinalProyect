@@ -4,6 +4,8 @@
 #include <iostream>
 #include "level.h"
 #include "menu.h"
+#include "board.h"
+#include <ctime>
 
 enum GameState {
     MENU = 0,

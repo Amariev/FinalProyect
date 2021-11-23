@@ -5,6 +5,7 @@
 #include "colors.h"
 #include "../include/player.h"
 #include "../include/enemy.h"
+#include "maze.h"
 
 //#define RED "\e[0;31m"
 
@@ -17,9 +18,10 @@ public:
     int **matrix;
     Player player;
     Enemy enemy;
+    Maze maze;
 
     Board();
-    Board(int cols, int rows, Player _player, Enemy _enemy);
+    Board(int cols, int rows);
     ~Board();
 
     void generateMatrix();
@@ -29,7 +31,5 @@ public:
     void update();
 
     void halt(Coord);
-
-    
 };
 #endif

@@ -9,7 +9,8 @@ Personaje::Personaje(Coord _pos, std::string _symbol, int _lives,
     this->pos = _pos;
     this -> symbol = _symbol;
     this -> lives = _lives;
-    this -> speed = _speed;
+    this->speed = _speed;
+    this->direction = Directions::STOP;
 }
 
 Personaje::Personaje(Personaje &o) {
@@ -42,6 +43,26 @@ Coord Personaje::getPos() { return pos; }
 Directions Personaje::getDirection() { return direction; }
 
 //
+
+void Personaje::move() {
+  switch (direction) {
+  case Directions::UP:
+    pos.Y -= speed;
+    break;
+  case Directions::DOWN:
+    pos.Y += speed;
+    break;
+  case Directions::RIGHT:
+    pos.X += speed;
+    break;
+  case Directions::LEFT:
+    pos.X -= speed;
+    break;
+  default:
+    break;
+  }
+}
+
 void Personaje::printAttributes() {
   std::cout << "Symbol: " << symbol << std::endl;
   std::cout << "Lives: " << lives << std::endl;

@@ -1,16 +1,15 @@
 #include "../include/maze.h"
 
-Maze::Maze(int **matrix_, int rows_, int columns_): matrix{matrix_}, row{rows_}, col{columns_} 
-    { 
-        den = rows_ * columns_ /4;
-    }
-void Maze::laberinto ()
-{
-  srand(time(NULL));
-  for (int i = 0; i < den; i++) {
-		int x = rand() % (col - 4) + 2; // 2 18
+Maze::Maze() {
+    FParedes = 8;
+}
+void Maze::laberinto(int _rows, int _cols, int **matrix) {
+    int den = _rows * _cols /4;
+    srand(time(NULL));
+    for (int i = 0; i < den; i++) {
+		int x = rand() % (_cols - 4) + 2; // 2 18
                 x = (x / 2) * 2;                // tiene que ser par 
-		int y = rand()% (row - 4) + 2;
+		int y = rand()% (_rows - 4) + 2;
 		y = (y / 2) * 2;
 		matrix[y][x] = 1; 
 		for (int j = 0; j < FParedes; j++) 
@@ -26,9 +25,4 @@ void Maze::laberinto ()
 			}				
 		}
 	}
-}
-
-int ** Maze::getMaze()
-{
-    return this->matrix;
 }

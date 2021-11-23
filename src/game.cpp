@@ -1,8 +1,4 @@
 #include "../include/game.h"
-#include "../include/player.h"
-#include "../include/level.h"
-
-#include <ctime>
 
 Game::Game() 
 {
@@ -49,8 +45,8 @@ void Game::run() //
     auto menuState = mainMenu;
     while (state != END) {
         delay(8);
-        switch (this->state) 
-        {
+        Board board(19 , 29);
+        switch (this->state) {
             case GameState::MENU: {
                 clearScreen();
                 while (menuState->getMenuState() != OUT)
@@ -78,8 +74,7 @@ void Game::run() //
             }
             case GameState::RUN: {
                 clearScreen();
-                level.draw();
-                
+                board.drawBoard();
                 break;
             }
 
