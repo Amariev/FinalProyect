@@ -6,6 +6,7 @@ Level::Level(){
 Level::Level(int _number) 
 {
     this->number = _number;
+    load_level();
 }
 
 Level::~Level(){
@@ -15,15 +16,10 @@ Level::~Level(){
 void Level::load_level() 
 {
     this->number = 1;
-    Enemy enemy({5,5},"\u2620");
 
-    this->board = new Board;
+    this->board = new Board(5, 5);
 
     this->board->generateMatrix();
-
-    int **matrix = board->getBoard();
-    int row = board->rows;
-    int col = board->cols;
 }
 
 

@@ -4,7 +4,6 @@
 #include <iostream>
 #include "level.h"
 #include "menu.h"
-#include "board.h"
 #include <ctime>
 
 enum GameState {
@@ -17,7 +16,7 @@ class Game
 {
     private:
       Level level; 
-    public:       
+    public:
         //Level level; // private
         Game();
         ~Game();

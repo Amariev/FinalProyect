@@ -17,7 +17,7 @@ public:
     int **matrix;
     Player player;
     Enemy enemy;
-    Maze maze;
+    // Maze maze;
 
     Board();
     Board(int cols, int rows);

@@ -3,7 +3,7 @@
 Game::Game() 
 {
     this->state = GameState::MENU;
-    // Level level;
+    Level level;
 }
 
 Game::~Game(){}
@@ -42,7 +42,6 @@ void Game::run() //
 {
     Menu *const mainMenu = new MainMenu();
     auto menuState = mainMenu;
-    Board board(3, 3);
     while (state != END) {
         delay(8);
         switch (this->state) {
@@ -73,7 +72,7 @@ void Game::run() //
             }
             case GameState::RUN: {
                 clearScreen();
-                board.drawBoard();
+                level.draw();
                 break;
             }
 

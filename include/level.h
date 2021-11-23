@@ -2,7 +2,7 @@
 #define LEVEL_H
 
 #include "../ext/conio.h"
-#include "../include/board.h"
+#include "board.h"
 
 #include <iostream>
 
@@ -12,7 +12,7 @@ class Level
         int number;
         bool complete;
         int time;
-        Board *board = new Board;
+        Board *board;
 
         Level();
         ~Level();
