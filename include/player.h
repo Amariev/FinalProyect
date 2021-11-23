@@ -10,8 +10,6 @@ public:
     int total_score;
     int bulletCount;
 
-    Directions getDirection();
-    void setDirection(Directions);
     Player();
     Player(Coord pos, std::string symbol, int bulletCount = 5, int lives = 1,
            int speed = 1, int level_score = 0, int total_score = 0);

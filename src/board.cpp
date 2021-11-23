@@ -70,8 +70,8 @@ void Board::drawBoard(){
     }
   }
 }
-/*
-void Board::drawBoard() {
+
+/* void Board::drawBoard() {
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < cols; j++) {
       if (matrix[i][j] == 1) {
@@ -85,8 +85,8 @@ void Board::drawBoard() {
     }
     std::cout << "\n";
   }
-}
-*/
+} */
+
 
 // void for (i){for(j){if(matrix[i][j] == 1 && player.pos.x == i && player.pos.y == j){ entonces direction = STOP}}
 
@@ -94,7 +94,7 @@ void Board::drawBoard() {
 void Board::halt(Coord pos){
   for (int i = 0; i < rows +2; i++){
     for (int j = 0; j < cols+ 2; j++){
-      if (matrix[i][j]==1 && i == pos.X && j == pos.Y){
+      if (matrix[i][j] == 1 && i == pos.X && j == pos.Y) {
         player.setDirection(STOP);
       }
     }
