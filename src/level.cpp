@@ -10,16 +10,16 @@ Level::Level(int _number)
 }
 
 Level::~Level(){
-    if(board!=nullptr){delete board;}
+    // if(board!=nullptr){delete board;}
 }
 
 void Level::load_level() 
 {
     this->number = 1;
 
-    this->board = new Board(5, 5);
+    this->board = Board(5, 5);
 
-    this->board->generateMatrix();
+    board.generateMatrix();
 }
 
 
@@ -39,5 +39,5 @@ void Level::check_end_level()
 void Level::draw()
 {
     // std::cout << "\033[2J\033[1;1H";
-    board->drawBoard();
+    board.drawBoard();
 }

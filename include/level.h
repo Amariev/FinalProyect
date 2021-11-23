@@ -12,7 +12,7 @@ class Level
         int number;
         bool complete;
         int time;
-        Board *board;
+        Board board;
 
         Level();
         ~Level();

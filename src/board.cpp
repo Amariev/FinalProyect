@@ -21,7 +21,6 @@ Board::~Board() {
     //    }
     //   delete[] matrix; 
     // }
-
 }
 
 // Métodos
@@ -67,6 +66,7 @@ void Board::drawBoard(){
           break;
       }
     }
+    std::cout << "\n";
   }
 }
 

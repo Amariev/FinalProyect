@@ -17,7 +17,7 @@ class Personaje
         std::string symbol;
         Directions direction;
 
-      public:
+    public:
         Personaje();
         Personaje(Coord pos, std::string symbol, int lives = 1,
                   int speed = 1);
