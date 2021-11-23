@@ -4,34 +4,34 @@
 
 #include <iostream>
 
+struct Coord{int X, Y; };
+
 class Personaje
 {
     protected:
-        int row;
-        int col;
+        Coord pos;
         int lives;
         int speed;
         std::string symbol;
 
       public:
         Personaje();
-        Personaje(int row, int col, std::string symbol, int lives = 1,
+        Personaje(Coord pos, std::string symbol, int lives = 1,
                   int speed = 1);
 
         Personaje(Personaje &o);
 
         void setSymbol(std::string);
-        void setRow(int);
-        void setCol(int);
+        void setPos(Coord);
         void setSpeed(int);
         void setLives(int);
 
         std::string getSymbol();
-        int getRow();
-        int getCol();
+        Coord getPos();
         int getSpeed();
         int getLives();
 
-        void imprimirAtributos();
+        virtual void printAttributes();
 };
+
 #endif

@@ -17,11 +17,12 @@ class Level
         int width;
         int height;
         int time;
-        Board *board = new Board;
-        Player *player = new Player;
+        Board *board;
+        Player *player;
 
         Level();
-        Level (int number, int width, int height);
+        Level(int number, int width, int height);
+        ~Level();
 
         void load_level();
         void change_level();

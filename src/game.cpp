@@ -34,7 +34,6 @@ void Game::clear_screen()
 
 void Game::run() 
 {
-    level.load_level();
     Menu *const mainMenu = new MainMenu();
     auto menuState = mainMenu;
     while (state != END) {

@@ -2,7 +2,7 @@
 
 // class Enemy
 Enemy::Enemy(){}
-Enemy::Enemy(int row, int col, std::string symbol, int lives, bool alive, int speed) : Personaje(row, col, symbol, lives, speed){
+Enemy::Enemy(Coord pos, std::string symbol, int lives, bool alive, int speed) : Personaje(pos, symbol, lives, speed){
     Enemy::alive = alive;
 };
 
@@ -20,12 +20,9 @@ void Enemy::set_alive(bool alive)
 {
     this->alive = alive;
 }
-void Enemy::imprimirAtributos()
+
+void Enemy::printAttributes()
 {
-  std::cout << "Row: " << row << std::endl;
-  std::cout << "Col: " << col << std::endl;
-  std::cout << "Symbol: " << symbol << std::endl;
-  std::cout << "Lives: " << lives << std::endl;
-  std::cout << "Speed: " << speed << std::endl;
-  std::cout << "Alive: " << alive << std::endl;
+    Personaje::printAttributes();
+    std::cout << "Alive: " << alive << std::endl;
 }

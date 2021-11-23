@@ -10,20 +10,20 @@ class Enemy : public Personaje {
     public:
         Enemy();
 
-        Enemy(int row, int col, std::string symbol, int lives = 1, bool alive = true,
+        Enemy(Coord pos, std::string symbol, int lives = 1, bool alive = true,
             int speed = 1);
         Enemy(Enemy &o);
 
         bool is_alive();
         void set_alive(bool alive);
-        void imprimirAtributos();
+        void printAttributes();
 
 };
 
 class Normal_Enemy : public Enemy {
     public:
 
-        Normal_Enemy(int row, int col, char symbol, int lives = 1, bool alive = true, int speed = 1);
+        Normal_Enemy(Coord pos, char symbol, int lives = 1, bool alive = true, int speed = 1);
 };
 
 #endif

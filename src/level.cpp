@@ -12,7 +12,12 @@ Level::Level(int number, int width, int height)
     this->height = height;
 }
 
-
+Level::~Level() {
+    /* if (board != nullptr)
+        delete board;
+    if(player != nullptr)
+        delete player; */
+}
 
 void Level::load_level() 
 {

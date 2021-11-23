@@ -12,11 +12,11 @@ Board::Board(int columnas, int filas, Player *_player, Enemy _enemy) : cols{colu
 }
 
 Board::~Board() {
-    /* for (int i= 0 ; i < rows; i++)
+    for (int i= 0 ; i < rows; i++)
     {
         delete[] matrix[i];
     }
-    delete[] matrix; */
+    delete[] matrix;
 }
 
 // Métodos

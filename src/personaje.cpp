@@ -1,55 +1,17 @@
-#include "../include/personaje.h"
+#include "../include/player.h"
 
-// constructor
-
-Personaje::Personaje()
+Player::Player(){}
+Player::Player(Coord pos, std::string symbol, 
+        int bulletCount,int lives , int speed, 
+        int level_score, 
+        int total_score):Personaje(pos, symbol, lives, speed)
 {
-    
-}
-
-Personaje::Personaje(int row, int col, std::string symbol, int lives,
-                     int speed) { // Personaje::row = row;
-  this -> row = row;
-  // Personaje::row = row;
-  this -> col = col;
-  this -> symbol = symbol;
-
-  this -> lives = lives;
-  this -> speed = speed;
-}
-
-Personaje::Personaje(Personaje &o)
+    Player::bulletCount = bulletCount;
+    Player::level_score = level_score;
+    Player::total_score = total_score;
+};
+void Player::printAttributes()
 {
-    row = o.row;
-    col = o.col;
-    lives = o.lives;
-    speed = o.speed;
-    symbol = o.symbol;
-}
-
-std::string Personaje::getSymbol() { return symbol; }
-
-void Personaje::setSymbol(std::string run) { symbol = run; }
-
-void Personaje::setRow(int row) { Personaje::row = row; }
-
-void Personaje::setCol(int col) { Personaje::col = col; }
-
-void Personaje::setLives(int lives) { Personaje::lives = lives; }
-
-void Personaje::setSpeed(int speed) { Personaje::speed = speed; }
-
-int Personaje::getRow() { return row; }
-
-int Personaje::getCol() { return col; }
-
-int Personaje::getLives() { return lives; }
-
-int Personaje::getSpeed() { return speed; }
-void Personaje::imprimirAtributos() {
-  std::cout << "Row: " << row << std::endl;
-  std::cout << "Col: " << col << std::endl;
-  std::cout << "Symbol: " << symbol << std::endl;
-  std::cout << "Lives: " << lives << std::endl;
-  std::cout << "Speed: " << speed << std::endl;
+    Personaje::printAttributes();
+    std::cout << "Bullet: " << bulletCount << std::endl;
 }
