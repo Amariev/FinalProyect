@@ -19,7 +19,7 @@ void Level::load_level()
 
     this->board = new Board;
 
-    this->board->inicializarMatriz();
+    this->board->generateMatrix();
 
     int **matrix = board->getBoard();
     int row = board->rows;

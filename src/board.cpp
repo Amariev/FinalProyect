@@ -95,7 +95,7 @@ void Board::halt(Coord pos){
   for (int i = 0; i < rows +2; i++){
     for (int j = 0; j < cols+ 2; j++){
       if (matrix[i][j]==1 && i == pos.X && j == pos.Y){
-        player.direction = STOP;
+        player.setDirection(STOP);
       }
     }
   }

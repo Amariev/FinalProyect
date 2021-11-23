@@ -5,7 +5,7 @@
 #include <ctime>
 
 struct Coord{int X, Y; };
-enum Directions {UP=1, DOWN, RIGHT, LEFT, IDLE};
+enum Directions {UP=1, DOWN, RIGHT, LEFT, STOP};
 
 class Personaje
 {
