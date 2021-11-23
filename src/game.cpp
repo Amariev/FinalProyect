@@ -10,11 +10,6 @@ Game::Game()
     Level level;
 }
 
-Game::Game(int time_)
-{
-    this->time = time_;
-}
-
 Game::~Game(){}
 
 GameState Game::getState()
@@ -27,20 +22,37 @@ void Game::setState(GameState state_)
 	this->state = state_;
 }
 
-void Game::clear_screen() 
+void Game::clearScreen() 
 {
     std::cout << "\033[2J\033[1;1H";
 }
 
-void Game::run() 
+void Game::delay(int a)
 {
+    int add=0;
+    int time;
+    
+    time = a * 1000000;
+
+    for (int i = 0; i < time; i++)
+    {
+        add *= i;
+        add++;
+        add++;
+    }
+}
+
+void Game::run() // 
+{
+    level.load_level();
     Menu *const mainMenu = new MainMenu();
     auto menuState = mainMenu;
     while (state != END) {
+        delay(8);
         switch (this->state) 
         {
             case GameState::MENU: {
-                clear_screen();
+                clearScreen();
                 while (menuState->getMenuState() != OUT)
                 {
                     switch (menuState->getMenuState())
@@ -65,8 +77,9 @@ void Game::run()
                 break;
             }
             case GameState::RUN: {
-                clear_screen();
+                clearScreen();
                 level.draw();
+                
                 break;
             }
 

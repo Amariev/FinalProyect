@@ -13,21 +13,21 @@ enum GameState {
 
 class Game
 {
-    public:
-        int time;
-        Level level;
-
+    private:
+      Level level; 
+    public:       
+        //Level level; // private
         Game();
         ~Game();
-        Game(int time);
-
+        
         void run();
 
         GameState getState();
         void setState(GameState);
+        void delay(int);
 
     private:
         GameState state;
-        void clear_screen();
+        void clearScreen();
 };
 #endif
