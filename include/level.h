@@ -11,12 +11,11 @@ class Level
    public: 
         int number;
         bool complete;
-        int time;
-        Board board;
+        int width, height;
+        Board *board = nullptr;
 
         Level();
         ~Level();
-        Level (int number);
 
         void load_level();
         void change_level();
