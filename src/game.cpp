@@ -28,7 +28,7 @@ void Game::delay(int a)
     int add=0;
     int time;
     
-    time = a * 1000000;
+    time = a * 10000000;
 
     for (int i = 0; i < time; i++)
     {
@@ -43,7 +43,7 @@ void Game::run() //
     Menu *const mainMenu = new MainMenu();
     auto menuState = mainMenu;
     while (state != END) {
-        delay(8);
+        delay(5);
         switch (this->state) {
             case GameState::MENU: {
                 clearScreen();

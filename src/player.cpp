@@ -37,3 +37,7 @@ void Player::printAttributes()
     Personaje::printAttributes();
     std::cout << "Bullet: " << bulletCount << std::endl;
 }
+
+void Player::update(){
+    input();
+}

@@ -8,11 +8,21 @@ Board::Board(int _cols, int _rows) : cols{_cols}, rows{_rows} {
 
     for (int i = 0; i < _rows+2; ++i)
         matrix[i] = new int[_cols+2]{};
-        
+
+    this->player = Player({1, rows-1});
     generateMatrix();
+    maze();
 }
 
-Board::~Board() {}
+Board::~Board() {
+    if(matrix!=nullptr){
+        for (int i = 0; i < rows+2; i++)
+        {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
+    }
+}
 
 // Métodos
 void Board::generateMatrix() {
@@ -97,10 +107,10 @@ void Board::assignBox(Coord pos, int value){
 //   }
 // }
 
-void Board::update(){
-    maze();
+void Board::update() {
+    player.update();
+    assignBox(player.getPos(), 2);
     drawBoard();
-//    assignBox( player.getPos(), 2);
 //    assignBox( enemy.getPos(), 3);
   //halt( player.getPos());
 }
