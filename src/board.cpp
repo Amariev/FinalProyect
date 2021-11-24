@@ -8,18 +8,17 @@ Board::Board(int _cols, int _rows) : cols{_cols}, rows{_rows} {
 
     for (int i = 0; i < _rows+2; ++i)
         matrix[i] = new int[_cols+2]{};
-
-    // maze.laberinto(rows+2, cols+2, matrix);
+        
     generateMatrix();
 }
 
 Board::~Board() {
     if(matrix!=nullptr){
-       /* for (int i= 0 ; i < rows; i++)
-       {
-         delete[] matrix[i];
-       }
-      delete[] matrix;  */
+    //     for (int i= 0 ; i < rows; i++)
+    //    {
+    //      delete[] matrix[i];
+    //    }
+    //   delete[] matrix; 
     }
 }
 
@@ -36,17 +35,31 @@ void Board::generateMatrix() {
   }
 }
 
-// void Board::assignBox(Coord pos, int value){
-//   for (int i = 1; i < (rows + 2) - 1; i++){
-//     for (int j = 1 ; j < (cols + 2) - 1; j++){
-//       if( i == pos.Y && j == pos.X){
-//         matrix[i][j]= value;
-//       }
-//     }
-//   }
-// }
+void Board::maze(){
+    int FParedes = 8;
+    int den = rows * cols /4;
+    srand(time(NULL));
+    for (int i = 0; i < den; i++) {
+		int x = rand() % (cols - 4) + 2; 
+                x = (x / 2) * 2;  // tiene que ser par 
+		int y = rand()% (rows - 4) + 2;
+		y = (y / 2) * 2;
+		matrix[y][x] = 1; 
+		for (int j = 0; j < FParedes; j++) 
+        {   //crear matrices para las paredes
+			int mx[4] = { x,  x,  x + 2, x - 2 }; 
+			int my[4] = { y + 2,y - 2, y ,  y };
+			int r = rand() % 4; //0-3, escoger un indice de la matriz
 
-// switch
+			if (matrix[my[r]][mx[r]] == 0) 
+            {
+				matrix[my[r]][mx[r]] = 1; 
+				matrix[my[r] +( y - my[r])/2][mx[r]+(x- mx[r])/2] = 1;
+			}				
+		}
+	}
+}
+
 
 void Board::drawBoard(){
   for (int i = 0 ; i < rows + 2; i ++){
@@ -71,23 +84,31 @@ void Board::drawBoard(){
   }
 }
 
-// void for (i){for(j){if(matrix[i][j] == 1 && player.pos.x == i && player.pos.y == j){ entonces direction = STOP}}
-
-//PROBAR
+void Board::assignBox(Coord pos, int value){
+  for (int i = 1; i < (rows + 2) - 1; i++){
+    for (int j = 1 ; j < (cols + 2) - 1; j++){
+      if( i == pos.Y && j == pos.X){
+        matrix[i][j]= value;
+      }
+    }
+  }
+}
 
 
 // void Board::halt(Coord pos){
 //   for (int i = 0; i < rows +2; i++){
-//     for (int j = 0; j < cols+ 2; j++){
-//       if (matrix[i][j] == 1 && i == pos.X && j == pos.Y) {
-//         player.setDirection(STOP);
+//      for (int j = 0; j < cols+ 2; j++){
+//        if (matrix[i][j] == 1 && i == pos.X && j == pos.Y) {
+//          player.setDirection(STOP);
 //       }
 //     }
 //   }
 // }
 
 void Board::update(){
-//   assignBox( player.getPos(), 2);
-//   assignBox( enemy.getPos(), 3);
+    drawBoard();
+    maze();
+//    assignBox( player.getPos(), 2);
+//    assignBox( enemy.getPos(), 3);
   //halt( player.getPos());
 }
