@@ -6,6 +6,13 @@
 #include "../include/player.h"
 #include "../include/enemy.h"
 
+enum material {
+  EMPTY,
+  WALL,
+  PLAYER,
+  ENEMY,
+  HABILITY
+};
 
 class Board
 {
@@ -22,7 +29,9 @@ public:
 
     void generateMatrix();
     int **getBoard() { return this->matrix; }
-    void assignBox(Coord, int);
+    void assignBox(Coord, material);
+    void checkCollisionPlayer();
+    void checkCollisionEnemy();
     void draw();
     void update();
 
