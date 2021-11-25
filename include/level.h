@@ -12,7 +12,7 @@ class Level
         int number;
         bool complete;
         int width, height;
-        Board *board = nullptr;
+        Board *board;
 
         Level();
         ~Level();

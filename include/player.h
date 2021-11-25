@@ -3,20 +3,24 @@
 
 #include "personaje.h"
 #include "../ext/conio.h"
+#include <string>
 
 class Player : public Personaje {
 private: 
     int velocity;
-public:
-    int level_score;
+    int levelScore;
     std::string name;
-    int total_score;
-    int bulletCount;
-
+    int totalScore;
+public:
     Player();
 
-    Player(Coord pos, std::string symbol = "<>", int bulletCount = 5, int lives = 1,
-           int speed = 1, int level_score = 0, int total_score = 0);
+    Player(Coord, std::string symbol = "<>", int lives = 1,
+           int level_score = 0, int total_score = 0);
+
+    void setName(std::string);
+
+    std::string getName();
+
     void printAttributes();
 
     void input();

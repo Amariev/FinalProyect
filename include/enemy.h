@@ -10,21 +10,21 @@ class Enemy : public Personaje {
     public:
         Enemy();
 
-        Enemy(Coord pos, std::string symbol, int lives = 1, bool alive = true,
-            int speed = 1);
+        Enemy(Coord pos, std::string symbol, int lives = 1, 
+                bool alive = true);
         Enemy(Enemy &o);
 
         bool isAlive();
         void setAlive(bool alive);
-        void printAttributes();
         void setRandomDirection();
+        void printAttributes();
 
 };
 
 class NormalEnemy : public Enemy {
     public:
 
-        NormalEnemy(Coord, char, int lives, bool alive, int speed);
+        NormalEnemy(Coord, char, int lives, bool alive);
 };
 
 #endif

@@ -62,7 +62,6 @@ void Board::maze(){
 	}
 }
 
-
 void Board::drawBoard(){
   for (int i = 0 ; i < rows + 2; i ++){
     for(int j = 0; j < cols + 2; j++){
