@@ -28,6 +28,7 @@ void Player::input(){
         }
     }
     move();
+    direction = STOP;
 }
 
 void Player::printAttributes()
