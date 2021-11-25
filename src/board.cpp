@@ -37,6 +37,7 @@ void Board::generateMatrix() {
 }
 
 void Board::maze() {
+  //find paredes, del punto seleccionado
   int FParedes = 8;
   int den = (rows+2) * (cols+2) / 4;
   srand(time(NULL));
