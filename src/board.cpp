@@ -38,12 +38,12 @@ void Board::generateMatrix() {
 
 void Board::maze() {
   int FParedes = 8;
-  int den = rows * cols / 4;
+  int den = (rows+2) * (cols+2) / 4;
   srand(time(NULL));
   for (int i = 0; i < den; i++) {
-    int x = rand() % (cols - 4) + 2;
+    int x = rand() % ((cols+2) - 4) + 2;
     x = (x / 2) * 2; // tiene que ser par
-    int y = rand() % (rows - 4) + 2;
+    int y = rand() % ((rows+2) - 4) + 2;
     y = (y / 2) * 2;
     matrix[y][x] = WALL;
     for (int j = 0; j < FParedes; j++) { // crear matrices para las paredes
