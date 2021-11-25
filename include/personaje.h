@@ -12,6 +12,7 @@ class Personaje : public Object
     protected:
         int lives;
         Directions direction;
+        Coord oldPos;
 
     public:
         Personaje();
@@ -21,9 +22,11 @@ class Personaje : public Object
 
         void setLives(int);
         void setDirection(Directions);
+        void setOldPos(Coord);
 
         int getLives();
         Directions getDirection();
+        Coord getOldPos();
 
         void move();
         void printAttributes();

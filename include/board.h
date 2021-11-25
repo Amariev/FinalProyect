@@ -23,7 +23,7 @@ public:
     void generateMatrix();
     int **getBoard() { return this->matrix; }
     void assignBox(Coord, int);
-    void drawBoard();
+    void draw();
     void update();
 
     void halt(Coord);

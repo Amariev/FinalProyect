@@ -43,7 +43,7 @@ void Game::run() //
     Menu *const mainMenu = new MainMenu();
     auto menuState = mainMenu;
     while (state != END) {
-        delay(5);
+        delay(1);
         switch (this->state) {
             case GameState::MENU: {
                 clearScreen();

@@ -25,7 +25,8 @@ void Player::input(){
             case 'd': case 'D':
                 direction = RIGHT;
                 break;
-        }
+            }
+        oldPos = pos;
     }
     move();
     direction = STOP;
@@ -37,6 +38,6 @@ void Player::printAttributes()
     std::cout << "Level Score: " << levelScore << std::endl;
 }
 
-void Player::update(){
+void Player::update() {
     input();
 }

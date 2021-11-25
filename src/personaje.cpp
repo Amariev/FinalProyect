@@ -22,12 +22,17 @@ Personaje::Personaje(Personaje &o) : Object(o) {
 
 void Personaje::setLives(int lives) { this->lives = lives; }
 
-void Personaje::setDirection(Directions _direction) { this->direction = _direction; }
+void Personaje::setDirection(Directions _direction) { this->direction = _direction;}
+
+void Personaje::setOldPos(Coord currentPos) { this->oldPos = currentPos; }
 
 // *********** GETTERS****************
 int Personaje::getLives() { return lives; }
 
 Directions Personaje::getDirection() { return direction; }
+
+Coord Personaje::getOldPos() { return oldPos; }
+//
 
 void Personaje::move() {
   switch (direction) {
