@@ -24,21 +24,24 @@ set (HEADER_FILES
     include/character.h
     include/end-game.h
     include/enemy.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
-    include/.h
+    include/engine.h
+    include/entity.h
+    include/game-over.h
+    include/game-over.h
+    include/game.h
+    include/hero.h
+    include/interface.h
+    include/level.h
+    include/main-menu.h
+    include/manu.h
+    include/moveable.h
+    include/next-level.h
+    include/normal.h
+    include/power-up.h
+    include/smart.h
+    include/stable.h
+    include/stats.h
+    include/tile.h
 )
 
 add_executable (program ${SOURCE_FILES} ${HEADER_FILES})
