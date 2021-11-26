@@ -10,7 +10,7 @@ class Enemy : public Personaje {
     public:
         Enemy();
 
-        Enemy(Coord pos, std::string symbol, int lives = 1, 
+        Enemy(Coord pos, int lives = 1, 
                 bool alive = true);
         Enemy(Enemy &o);
 
@@ -23,8 +23,8 @@ class Enemy : public Personaje {
 
 class NormalEnemy : public Enemy {
     public:
-
-        NormalEnemy(Coord, char, int lives, bool alive);
+      NormalEnemy();
+      NormalEnemy(Coord, int lives, bool alive);
 };
 
 #endif

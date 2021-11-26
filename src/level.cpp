@@ -3,7 +3,7 @@
 Level::Level() {
   width = 25;
   height = 25;
-  this->board = new Board(width, height);
+  this->board = new Board(width, height, 2);
 }
 
 Level::~Level() {
@@ -22,7 +22,7 @@ void Level::change_level() {
   delete board;
   width += 2;
   height += 2;
-  this->board = new Board(width, height);
+  this->board = new Board(width, height, 3);
 }
 
 // comprobar el nivel

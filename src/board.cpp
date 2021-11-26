@@ -1,17 +1,19 @@
 #include "../include/board.h"
+#include <cstdlib>
 
 Board::Board() {}
 
 // implementar cols+2 rows+2
-Board::Board(int _cols, int _rows) : cols{_cols}, rows{_rows} {
+Board::Board(int _cols, int _rows, int _normalE) : cols{_cols}, rows{_rows}, numNormalE(_normalE){
   matrix = new int *[_rows + 2];
 
   for (int i = 0; i < _rows + 2; ++i)
     matrix[i] = new int[_cols + 2]{};
-
-  this->player = Player({1, rows - 1});
+  enemyN = new NormalEnemy[numNormalE]; 
+  this->player = Player({1, rows});
   generateMatrix();
   maze();
+  initializeEnemies();
 }
 
 Board::~Board() {
@@ -21,6 +23,7 @@ Board::~Board() {
     }
     delete[] matrix;
   }
+  if(enemyN!=nullptr) delete [] enemyN;
 }
 
 // Métodos
@@ -72,7 +75,8 @@ void Board::draw() {
         std::cout << BLUE << player.getSymbol() << NC;
         break;
       case ENEMY:
-        std::cout << RED << enemy.getSymbol() << NC;
+        std::cout << RED << "/\\" << NC;
+        // std::cout << RED << enemyN->getSymbol() << NC;
         break;
       default:
         std::cout << "  ";
@@ -100,7 +104,41 @@ void Board::checkCollisionPlayer() {
         player.setPos(player.getOldPos());
     default:
         break;
-  }
+    }
+}
+
+/* void Board::checkCollisionEnemy() {
+    for (int i = 0; i < numNormalE; i++) {
+        switch (matrix[enemyN[i].getOldPos().Y][enemyN[i].getOldPos().X]) {
+        // case ENEMY: gameover = 1;  break;
+        case WALL:
+            player.setPos(player.getOldPos());
+        default:
+            break;
+        }
+    }
+} */
+
+void Board::initializeEnemies(){
+    srand(time(NULL));
+    int x, y;
+    for (int i = 0; i < numNormalE; i++) {
+        do{
+            y = rand()% rows + 1;
+            if (y < (rows / 3)) {
+              x = rand() % cols + 1;
+            } else {
+              x = rand() % cols + (3 * cols / 4);
+            }
+        } while(matrix[y][x]!=0);
+        enemyN[i].setPos({x, y});
+    }
+}
+
+void Board::assignEnemyBox(){
+    for (int i = 0; i < numNormalE; i++) {
+        assignBox(enemyN[i].getPos(), ENEMY);
+    }
 }
 
 void Board::update() {
@@ -108,6 +146,7 @@ void Board::update() {
   checkCollisionPlayer();
   assignBox(player.getOldPos(), EMPTY);
   assignBox(player.getPos(), PLAYER);
+  assignEnemyBox();
   draw();
   //    assignBox( enemy.getPos(), 3);
   // halt( player.getPos());

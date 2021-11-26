@@ -2,8 +2,9 @@
 
 // class Enemy
 Enemy::Enemy(){}
-Enemy::Enemy(Coord pos, std::string symbol, int lives, bool alive) : Personaje(pos, symbol, lives){
+Enemy::Enemy(Coord pos, int lives, bool alive) : Personaje(pos, symbol, lives){
     Enemy::alive = alive;
+    symbol = "/\\";
 };
 
 Enemy::Enemy(Enemy &o) : Personaje(o) 
@@ -42,4 +43,5 @@ void Enemy::printAttributes()
 
 // class Normal Enemy
 
-NormalEnemy::NormalEnemy(Coord _pos, char _symbol, int lives = 1, bool alive = true):Enemy(pos, symbol, lives, alive){}
+NormalEnemy::NormalEnemy(){}
+NormalEnemy::NormalEnemy(Coord _pos, int lives = 1, bool alive = true):Enemy(pos, lives, alive){}

@@ -5,6 +5,7 @@
 #include "colors.h"
 #include "../include/player.h"
 #include "../include/enemy.h"
+#include "object.h"
 
 enum material {
   EMPTY,
@@ -20,22 +21,23 @@ public:
     int cols;
     int rows;
     int **matrix;
+    int numNormalE;
+    NormalEnemy *enemyN;
     Player player;
-    Enemy enemy;
 
     Board();
-    Board(int cols, int rows);
+    Board(int, int, int);
     ~Board();
 
     void generateMatrix();
-    int **getBoard() { return this->matrix; }
+    void maze();
     void assignBox(Coord, material);
+    void assignEnemyBox();
     void checkCollisionPlayer();
     void checkCollisionEnemy();
     void draw();
     void update();
 
-    void halt(Coord);
-    void maze();
+    void initializeEnemies();
 };
 #endif
