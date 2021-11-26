@@ -32,7 +32,7 @@ void Enemy::setRandomDirection() {
         case 4:
             direction = Directions::LEFT;
             break;
-    }
+        }
 }
 
 void Enemy::printAttributes()

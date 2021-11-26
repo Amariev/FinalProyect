@@ -107,17 +107,20 @@ void Board::checkCollisionPlayer() {
     }
 }
 
-/* void Board::checkCollisionEnemy() {
+void Board::checkCollisionEnemy() {
     for (int i = 0; i < numNormalE; i++) {
-        switch (matrix[enemyN[i].getOldPos().Y][enemyN[i].getOldPos().X]) {
+        switch (matrix[enemyN[i].getPos().Y][enemyN[i].getPos().X]) {
         // case ENEMY: gameover = 1;  break;
         case WALL:
-            player.setPos(player.getOldPos());
+            enemyN[i].setPos(enemyN[i].getOldPos());
+            enemyN[i].setRandomDirection();
+            break;
         default:
             break;
         }
+        enemyN[i].move();
     }
-} */
+}
 
 void Board::initializeEnemies(){
     srand(time(NULL));
@@ -125,13 +128,15 @@ void Board::initializeEnemies(){
     for (int i = 0; i < numNormalE; i++) {
         do{
             y = rand()% rows + 1;
-            if (y < (rows / 3)) {
+            /* if (y < (rows / 3)) {
               x = rand() % cols + 1;
             } else {
               x = rand() % cols + (3 * cols / 4);
-            }
+            } */
+            x = rand() % cols + 1;
         } while(matrix[y][x]!=0);
         enemyN[i].setPos({x, y});
+        enemyN[i].setRandomDirection();
     }
 }
 
@@ -144,6 +149,7 @@ void Board::assignEnemyBox(){
 void Board::update() {
   player.update();
   checkCollisionPlayer();
+  // checkCollisionEnemy();
   assignBox(player.getOldPos(), EMPTY);
   assignBox(player.getPos(), PLAYER);
   assignEnemyBox();
