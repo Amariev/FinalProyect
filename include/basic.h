@@ -18,7 +18,7 @@
 #include "entity.h"
 #include "game-over.h"
 #include "game.h"
-#include "hero.h"
+#include "player.h"
 #include "interface.h"
 #include "level.h"
 #include "main-menu.h"
@@ -42,7 +42,7 @@ class Engine;
 class Entity;
 class GameOver;
 class Game;
-class Hero;
+class Player;
 class Interface;
 class Level;
 class MainMenu;

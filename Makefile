@@ -1,13 +1,13 @@
 application=program
 
 build:
-	mkdir -p build; cd build; cmake .../.; make; cd ../.;
+	mkdir -p build; cd build; cmake ../.; make; cd ../.;
 
 run:
-	cd build; ./$(application)
+	cd build; ./$(application);
 
 clean:
-	rm -rf buid/;
+	rm -rf build/;
 
 start:
 	$(MAKE) clean; $(MAKE) build; $(MAKE) run;

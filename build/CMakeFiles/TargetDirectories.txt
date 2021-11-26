@@ -1,0 +1,3 @@
+/home/runner/FinalProyect/build/CMakeFiles/rebuild_cache.dir
+/home/runner/FinalProyect/build/CMakeFiles/program.dir
+/home/runner/FinalProyect/build/CMakeFiles/edit_cache.dir
