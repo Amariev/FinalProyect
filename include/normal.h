@@ -1,0 +1,9 @@
+#ifndef NORMAL_H_
+#define NORMAL_H_
+
+class Normal
+{
+    ;
+};
+
+#endif
