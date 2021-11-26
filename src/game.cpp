@@ -1,7 +1,6 @@
 #include "../include/game.h"
 
-Game::Game() 
-{
+Game::Game() {
     this->state = GameState::MENU;
     Level level;
 }
@@ -43,7 +42,7 @@ void Game::run() //
     Menu *const mainMenu = new MainMenu();
     auto menuState = mainMenu;
     while (state != END) {
-        delay(1);
+        delay(5);
         switch (this->state) {
             case GameState::MENU: {
                 clearScreen();
@@ -60,6 +59,7 @@ void Game::run() //
                         case MenuState::PLAY: {
                             this->state = GameState::RUN;
                             menuState->setMenuState(MenuState::OUT);
+                            // delete mainMenu;
                             level.load_level();
                         }
 

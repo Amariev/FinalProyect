@@ -17,7 +17,7 @@ bool Enemy::isAlive(){ return alive; }
 void Enemy::setAlive(bool alive) { this->alive = alive; }
 
 void Enemy::setRandomDirection() {
-    srand(time(NULL));
+    // srand(time(NULL));
     int x = rand() % 4 + 1;
     switch (x) {
         case 1:
@@ -33,6 +33,11 @@ void Enemy::setRandomDirection() {
             direction = Directions::LEFT;
             break;
         }
+}
+
+void Enemy::update() {
+    oldPos = pos;
+    move();
 }
 
 void Enemy::printAttributes()

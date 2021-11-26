@@ -17,6 +17,7 @@ class Enemy : public Personaje {
         bool isAlive();
         void setAlive(bool alive);
         void setRandomDirection();
+        void update();
         void printAttributes();
 
 };

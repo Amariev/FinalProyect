@@ -109,8 +109,8 @@ void Board::checkCollisionPlayer() {
 
 void Board::checkCollisionEnemy() {
     for (int i = 0; i < numNormalE; i++) {
+        enemyN[i].update();
         switch (matrix[enemyN[i].getPos().Y][enemyN[i].getPos().X]) {
-        // case ENEMY: gameover = 1;  break;
         case WALL:
             enemyN[i].setPos(enemyN[i].getOldPos());
             enemyN[i].setRandomDirection();
@@ -118,7 +118,6 @@ void Board::checkCollisionEnemy() {
         default:
             break;
         }
-        enemyN[i].move();
     }
 }
 
@@ -142,18 +141,19 @@ void Board::initializeEnemies(){
 
 void Board::assignEnemyBox(){
     for (int i = 0; i < numNormalE; i++) {
+        assignBox(enemyN[i].getOldPos(), EMPTY);
+    }
+    for (int i = 0; i < numNormalE; i++) {
         assignBox(enemyN[i].getPos(), ENEMY);
     }
 }
 
 void Board::update() {
   player.update();
+  checkCollisionEnemy();
   checkCollisionPlayer();
-  // checkCollisionEnemy();
   assignBox(player.getOldPos(), EMPTY);
   assignBox(player.getPos(), PLAYER);
   assignEnemyBox();
   draw();
-  //    assignBox( enemy.getPos(), 3);
-  // halt( player.getPos());
 }
