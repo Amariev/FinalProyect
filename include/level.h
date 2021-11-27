@@ -25,6 +25,7 @@ class Level
     int getPoints() { return this->points; }
     int getTime() { return this->time; }
 
+    void generate(Screen &);
     bool play(Screen &, Player *&);
 };
 

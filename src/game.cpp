@@ -2,6 +2,8 @@
 
 Game::Game(Screen & screen_) : screen (screen_)
 {
+  this->screen.create(70, 40, "Ghost Busters");
+
   this->lastPoints = 0.f;
   this->lastTime = 0.f;
 }
