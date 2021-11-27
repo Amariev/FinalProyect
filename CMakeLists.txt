@@ -33,13 +33,15 @@ set (SOURCE_FILES
     src/normal.cpp
     src/player.cpp
     src/power-up.cpp
+    src/screen.cpp
     src/smart.cpp
     src/stable.cpp
-    src/stats.cpp
     src/tile.cpp
     )
 
 set (HEADER_FILES
+    include/structures.h
+    include/colors.h
     include/ability.h
     include/basic.h
     include/bomb.h
@@ -61,6 +63,7 @@ set (HEADER_FILES
     include/next-level.h
     include/normal.h
     include/power-up.h
+    include/screen.h
     include/smart.h
     include/stable.h
     include/stats.h

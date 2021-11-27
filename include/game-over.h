@@ -3,7 +3,9 @@
 
 class GameOver
 {
-    ;
+    public:
+      GameOver();
+      ~GameOver();
 };
 
 #endif

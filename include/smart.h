@@ -1,9 +1,13 @@
 #ifndef SMART_H_
 #define SMART_H_
 
-class Smart
+class Smart : public Enemy
 {
-    ;
+  public:
+    Smart();
+    ~Smart();
+
+    virtual void update(float);
 };
 
 #endif

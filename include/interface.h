@@ -3,7 +3,16 @@
 
 class Interface
 {
-    ;
+  Player *& player;
+
+  std::vector <Button *> buttons;
+
+  public:
+    Interface(Player *&);
+    ~Interface();
+
+    void draw(Screen &);
+    void update(float);
 };
 
 #endif

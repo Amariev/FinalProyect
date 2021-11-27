@@ -1,9 +1,24 @@
-#ifndef HERO_H_
-#define HERO_H_
+#ifndef PLAYER_H_
+#define PLAYER_H_
 
-class Hero
+class Player : public Character
 {
-    ;
+  protected:
+    bool abilityCast;
+
+    public:
+      Player();
+      virtual ~Player();
+      
+      bool isAbilityCast();
+      float getLastCast();
+
+      Player * getPlayer();
+
+      virtual void update(float);
+
+      virtual bool castAbility();
+      virtual Ability * getAbility();
 };
 
 #endif

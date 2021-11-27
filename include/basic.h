@@ -5,33 +5,43 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <unistd.h>
 
 #include "../lib/conio.h"
 
-#include "ability.h"
-#include "bomb.h"
+#include "structures.h"
+#include "colors.h"
+
+
+#include "screen.h"
 #include "button.h"
-#include "character.h"
+
+#include "menu.h"
+#include "main-menu.h"
+#include "next-level.h"
 #include "end-game.h"
-#include "enemy.h"
-#include "engine.h"
 #include "entity.h"
+#include "moveable.h"
+#include "stable.h"
+#include "character.h"
+#include "power-up.h"
+#include "tile.h"
+#include "ability.h"
 #include "game-over.h"
-#include "game.h"
 #include "player.h"
+#include "enemy.h"
+#include "bomb.h"
+#include "normal.h"
+#include "smart.h"
+
+#include "stats.h"
 #include "interface.h"
 #include "level.h"
-#include "main-menu.h"
-#include "menu.h"
-#include "moveable.h"
-#include "next-level.h"
-#include "normal.h"
-#include "power-up.h"
-#include "smart.h"
-#include "stable.h"
-#include "stats.h"
-#include "tile.h"
+#include "engine.h"
+#include "game.h"
 
+
+class Screen;
 class Ability;
 class Bomb;
 class Button;

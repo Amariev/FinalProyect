@@ -2,8 +2,11 @@
 
 int main()
 {
- 
-    std::cout << "Hello world!" << std::endl;
+  Screen screen;
+  Game *const game = new Game(screen);
+  game->run();
 
-    return 0;
+  delete game;
+
+  return 0;
 }

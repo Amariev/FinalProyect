@@ -3,7 +3,12 @@
 
 class EndGame
 {
-    ;
+  public:
+    EndGame(int, float);
+    ~EndGame();
+
+    virtual void run(Screen &) final;
+    virtual void draw(Screen &) final;
 };
 
 #endif
