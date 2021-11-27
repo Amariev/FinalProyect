@@ -10,6 +10,7 @@ class Stable : public Entity
   protected:
     bool collidable;
     bool interactable;
+    Interaction interaction;
 
   public:
     Stable();

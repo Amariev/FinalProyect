@@ -6,13 +6,15 @@
 #include <ctime>
 #include <vector>
 #include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "../lib/conio.h"
 
 #include "structures.h"
 #include "colors.h"
 
-
+#include "entity.h"
 #include "screen.h"
 #include "button.h"
 
@@ -20,7 +22,6 @@
 #include "main-menu.h"
 #include "next-level.h"
 #include "end-game.h"
-#include "entity.h"
 #include "moveable.h"
 #include "stable.h"
 #include "character.h"

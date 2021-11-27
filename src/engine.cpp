@@ -10,11 +10,22 @@ Engine::Engine(Screen & screen_)
 
   Level *const level1 = new Level(screen_, this->player);
   this->levels.push_back(level1);
-  Level *const level2 = new Level(screen_, this->player);
-  this->levels.push_back(level2);
+  // Level *const level2 = new Level(screen_, this->player);
+  // this->levels.push_back(level2);
+
+  // for(int i = 0; i < this->levels.size(); i++) 
+  // {
+  //   Level * const level = this->levels.at(i);
+  //   level->setLevelName("Level " + i);
+  //   level->setLevelNumber(i + 1);
+	// 	level->resetPoints();
+	// 	level->resetTime();
+  // }
 
   for (Level * const level : this->levels)
 	{
+    level->setLevelName("");
+    level->setLevelNumber(1);
 		level->resetPoints();
 		level->resetTime();
 	}
@@ -39,11 +50,11 @@ void Engine::run(Screen & screen_)
   this->running = false;
 }
 bool Engine::play(Screen & screen_, Level * level_){
-  NextLevel *const next = new NextLevel(this->currentLevel);
-  next->draw(screen_);
-  usleep(3000);
+  // NextLevel *const next = new NextLevel(this->currentLevel);
+  // next->draw(screen_);
+  // usleep(3000);
 
-  delete next;
+  // delete next;
 
   bool shouldContinue = false;
 

@@ -19,6 +19,7 @@ class Screen
     int ** getSelf() { return this->self; }
 
     void create(int, int, std::string);
+    void draw(Entity *);
     void draw(std::string);
     void display();
 };

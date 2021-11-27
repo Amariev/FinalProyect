@@ -10,6 +10,8 @@ class Entity
 
       Coord coords;
 
+      std::string symbol;
+
     public:
       Entity();
       virtual ~Entity();
@@ -24,6 +26,8 @@ class Entity
       bool isMoveable();
       bool isDead();
       bool destroy();
+  
+      std::string getSymbol() { return this->symbol; }
 
       virtual bool checkCollision(Entity *);
       virtual bool collision(Entity *) = 0;
