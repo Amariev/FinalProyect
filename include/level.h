@@ -10,9 +10,9 @@ class Level
 {
    public: 
         int number;
-        bool complete;
-        int width, height;
-        Board *board = nullptr;
+        bool complete, end;
+        int width, height, numberEnemies;
+        Board *board;
 
         Level();
         ~Level();
@@ -21,7 +21,8 @@ class Level
         void change_level();
         void check_end_level();
         void reset_game();
-        // void complete();
+        bool ended();
+
         void draw();
 };
 #endif

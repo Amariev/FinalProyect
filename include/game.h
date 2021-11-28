@@ -4,7 +4,10 @@
 #include <iostream>
 #include "level.h"
 #include "menu.h"
+#include "register.h"
 #include <ctime>
+
+#include "../provider/database.h"
 
 enum GameState {
     MENU = 0,
@@ -16,6 +19,8 @@ class Game
 {
     private:
       Level level; 
+      Database<Register> *registerDb;
+
     public:
         //Level level; // private
         Game();
@@ -26,9 +31,10 @@ class Game
         GameState getState();
         void setState(GameState);
         void delay(int);
-
-    private:
         GameState state;
         void clearScreen();
+        void input();
+
+        void save();
 };
 #endif

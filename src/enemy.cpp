@@ -2,8 +2,9 @@
 
 // class Enemy
 Enemy::Enemy(){}
-Enemy::Enemy(Coord pos, std::string symbol, int lives, bool alive, int speed) : Personaje(pos, symbol, lives, speed){
+Enemy::Enemy(Coord pos, int lives, bool alive) : Personaje(pos, symbol, lives){
     Enemy::alive = alive;
+    symbol = "/\\";
 };
 
 Enemy::Enemy(Enemy &o) : Personaje(o) 
@@ -16,7 +17,7 @@ bool Enemy::isAlive(){ return alive; }
 void Enemy::setAlive(bool alive) { this->alive = alive; }
 
 void Enemy::setRandomDirection() {
-    srand(time(NULL));
+    // srand(time(NULL));
     int x = rand() % 4 + 1;
     switch (x) {
         case 1:
@@ -31,7 +32,12 @@ void Enemy::setRandomDirection() {
         case 4:
             direction = Directions::LEFT;
             break;
-    }
+        }
+}
+
+void Enemy::update() {
+    oldPos = pos;
+    move();
 }
 
 void Enemy::printAttributes()
@@ -42,4 +48,5 @@ void Enemy::printAttributes()
 
 // class Normal Enemy
 
-NormalEnemy::NormalEnemy(Coord _pos, char _symbol, int lives = 1, bool alive = true, int speed = 1):Enemy(pos, symbol, lives, alive, speed){}
+NormalEnemy::NormalEnemy(){}
+NormalEnemy::NormalEnemy(Coord _pos, int lives = 1, bool alive = true):Enemy(pos, lives, alive){}

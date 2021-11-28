@@ -2,42 +2,42 @@
 
 Player::Player() {}
 
-Player::Player(Coord pos, std::string symbol, 
-        int bulletCount,int lives , int speed, 
-        int level_score, 
-        int total_score):Personaje(pos, symbol, lives, speed)
+Player::Player(Coord pos, std::string symbol, int lives, 
+        int levelScore, int totalScore):Personaje(pos, symbol, lives)
 {
-    this->bulletCount = bulletCount;
-    this->level_score = level_score;
-    this->total_score = total_score;
+    this->levelScore = levelScore;
+    this->totalScore = totalScore;
+    this->direction = STOP;
 };
 
 void Player::input(){
     if (kbhit()) {
         switch (getch()) {
-            case 'w': case 'W': case 'i': case 'I':
+            case 'w': case 'W':
                 direction = UP;
                 break;
-            case 's': case 'S': case 'k': case 'K':
+            case 's': case 'S':
                 direction = DOWN;
                 break;
-            case 'a': case 'A': case 'j': case 'J':
+            case 'a': case 'A':
                 direction = LEFT;
                 break;
-            case 'd': case 'D': case 'l': case 'L':
+            case 'd': case 'D':
                 direction = RIGHT;
                 break;
-        }
+            }
+        oldPos = pos;
     }
     move();
+    direction = STOP;
 }
 
 void Player::printAttributes()
 {
     Personaje::printAttributes();
-    std::cout << "Bullet: " << bulletCount << std::endl;
+    std::cout << "Level Score: " << levelScore << std::endl;
 }
 
-void Player::update(){
+void Player::update() {
     input();
 }

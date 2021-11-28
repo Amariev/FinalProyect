@@ -2,6 +2,8 @@
 #define MENU_H
 
 #include <iostream>
+#include <cstring>
+
 using namespace std;
 
 enum MenuState
@@ -27,6 +29,12 @@ class Menu
 
         virtual void run();
         virtual void draw();
+        // void space(int);
+        void topLine(int, bool);
+        void bottomLine(int, bool);
+        /* void textString(int, bool);
+        void drawBox(); */
+        void highlight();
 };
 
 #endif
