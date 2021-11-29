@@ -10,9 +10,6 @@ class Engine
       int totalLevels;
       int currentLevel;
       bool running;
-      Stats totalStats;
-
-      long delay;
 
       std::vector <Level *> levels;
       Player * player;
@@ -20,12 +17,6 @@ class Engine
     public:
       Engine(Screen &);
       ~Engine();
-
-      void updateScore(int);
-      void updateTime(float);
-
-      int getPoints() { return this->totalStats.pts; }
-      float getTime() { return this->totalStats.tm; }
 
       void run(Screen &);
       bool play(Screen &, Level *);

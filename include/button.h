@@ -13,7 +13,6 @@ class Button
 
       std::string getText() { return this->icon + " " + this->name; }
 
-      void setPos(const Coord &);
       void setColor();
       void setIcon(std::string icon_) { this->icon = icon_; }
       void setName(const std::string & name_) { this->name = name_; }

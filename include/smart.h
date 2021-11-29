@@ -7,7 +7,7 @@ class Smart : public Enemy
     Smart();
     ~Smart();
 
-    virtual void update(float);
+    virtual void update();
 };
 
 #endif

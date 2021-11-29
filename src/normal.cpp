@@ -1,13 +1,9 @@
 #include "../include/basic.h"
 
-Normal::Normal()
-{
-  ;
-}
+Normal::Normal() { ; }
+Normal::~Normal() { ; }
 
-Normal::~Normal()
-{
-  ;
+void Normal::update() {
+  this->lastPosition = position;
+  this->move();
 }
-
-void Normal::update(float diff_){}

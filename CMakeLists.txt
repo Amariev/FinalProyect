@@ -9,7 +9,9 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
 set (LIB_FILES
-    lib/conio.h    
+    lib/conio.h
+    util/array.h
+    provider/database.h    
 )
 
 set (SOURCE_FILES
@@ -18,7 +20,6 @@ set (SOURCE_FILES
     src/bomb.cpp
     src/button.cpp
     src/character.cpp
-    src/end-game.cpp
     src/enemy.cpp
     src/engine.cpp
     src/entity.cpp
@@ -28,15 +29,13 @@ set (SOURCE_FILES
     src/level.cpp
     src/main-menu.cpp
     src/menu.cpp
-    src/moveable.cpp
     src/next-level.cpp
     src/normal.cpp
     src/player.cpp
     src/power-up.cpp
     src/screen.cpp
     src/smart.cpp
-    src/stable.cpp
-    src/tile.cpp
+    src/register.cpp
     )
 
 set (HEADER_FILES
@@ -47,7 +46,6 @@ set (HEADER_FILES
     include/bomb.h
     include/button.h
     include/character.h
-    include/end-game.h
     include/enemy.h
     include/engine.h
     include/entity.h
@@ -59,15 +57,17 @@ set (HEADER_FILES
     include/level.h
     include/main-menu.h
     include/menu.h
-    include/moveable.h
     include/next-level.h
     include/normal.h
     include/power-up.h
     include/screen.h
     include/smart.h
-    include/stable.h
-    include/stats.h
-    include/tile.h
+    include/register.h
+    include/resources.h
+)
+
+file(GLOB DATABASE_FILES
+    "database/*.txt"
 )
 
 add_executable (program ${SOURCE_FILES} ${LIB_FILES} ${HEADER_FILES})

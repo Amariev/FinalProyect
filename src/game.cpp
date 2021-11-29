@@ -2,10 +2,10 @@
 
 Game::Game(Screen & screen_) : screen (screen_)
 {
+  std::string databaseName = Resources::databasePath("register.txt");
+  this->registerDb = new Database<Register>(databaseName, 2);
+  this->registerDb->read();
   this->screen.create(25, 25, "Ghost Busters");
-
-  this->lastPoints = 0.f;
-  this->lastTime = 0.f;
 }
 
 Game::~Game() 
@@ -27,7 +27,7 @@ void Game::run()
           switch (menuState->getMenuState())
           {
             case MenuState::MAIN_MENU: {
-              menuState = mainMenu;
+              menuState = new MainMenu();
               menuState->setMenuState(MenuState::MAIN_MENU);
               menuState->run(this->screen);
               break;
@@ -52,24 +52,55 @@ void Game::run()
       case GameState::GAME: {
         Engine *engine = new Engine(this->screen);
         engine->run(this->screen);
-        this->updateScore(engine->getPoints(), engine->getTime());
-        this->state = GameState::MENU;
+        this->state = GameState::GAMEOVER;
+        
+        menuState = new GameOver();
         menuState->setMenuState(MenuState::GAME_OVER);
         delete engine;
         
         break;
       }
-      case GameState::END: {
+      case GameState::GAMEOVER: {
+        bool flag = true;
+        while (menuState->getMenuState() != OUT && flag) {
+          menuState->run(this->screen);
+          switch (menuState->getMenuState())
+          {
+            case MenuState::PLAY: {
+              this->state = GameState::GAME;
+              menuState->setMenuState(MenuState::OUT);
+              break;
+            }
+            case MenuState::SAVE: {
+              this->save();
+              this->state = GameState::MENU;
+              menuState->setMenuState(MenuState::MAIN_MENU);
+              flag = false;
+              break;
+            }
+            case MenuState::EXIT: {
+              menuState->setMenuState(MenuState::OUT);
+              this->state = GameState::END;
+              break;
+            }
+            default: {
+              break;
+            }
+          }  
+        }
         break;
       }
-      default: {
-        break;
-      }
+      default: break;
     }
   }
 }
 
-void Game::updateScore(int points_, float time_){
-  this->lastPoints = points_;
-  this->lastTime = time_;
+
+void Game::save()
+{
+  std::string guid = Resources::getUUID();
+
+  Register *reg = new Register(guid, "99999");
+  this->registerDb->add(reg);
+  this->registerDb->write();
 }

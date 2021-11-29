@@ -4,8 +4,14 @@
 class Bomb : public Ability
 {
   public:
+    int time;
+    int tick; 
+
     Bomb();
     ~Bomb();
+
+    void tickTime();
+    void destroy();
 };
 
 #endif

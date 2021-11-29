@@ -15,7 +15,7 @@ void Interface::draw(Screen & screen_)
   ;
 }
 
-void Interface::update(float deltatime_)
+void Interface::update()
 {
   ;
 }

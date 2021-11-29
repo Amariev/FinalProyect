@@ -12,7 +12,7 @@ class Interface
     ~Interface();
 
     void draw(Screen &);
-    void update(float);
+    void update();
 };
 
 #endif

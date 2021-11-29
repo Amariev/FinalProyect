@@ -7,7 +7,7 @@ class Normal : public Enemy
     Normal();
     ~Normal();
 
-    virtual void update(float);
+    virtual void update();
 };
 
 #endif

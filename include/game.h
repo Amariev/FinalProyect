@@ -1,15 +1,14 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-enum GameState { MENU = 0, GAME = 1, END = 2};
+enum GameState { MENU = 0, GAME = 1, GAMEOVER = 2, END = 3};
 
 class Game
 {
   protected:
     Screen & screen;
+    Database<Register> *registerDb;
     GameState state;
-    int lastPoints;
-    float lastTime;
 
   public:
     Game(Screen &);
@@ -21,7 +20,7 @@ class Game
     void setState(GameState state_) { this->state = state_; }
 
     void run();
-    void updateScore(int, float);
+    void save();
 };
 
 #endif

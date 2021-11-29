@@ -4,11 +4,7 @@
 class Entity
 {
     protected:
-      bool dead;
-      bool canMove;
-      int ID;
-
-      Coord coords;
+      Coord position;
 
       std::string symbol;
 
@@ -16,22 +12,14 @@ class Entity
       Entity();
       virtual ~Entity();
 
-      int getID() { return this->ID; }
+      Coord getPosition() { return this->position; }
+      void setPosition(Coord position_) { this->position = position_; }
 
-      Coord getCoords() { return this->coords; }
-
-      void setCoords(Coord coords_) { this->coords = coords_; }
-
-      bool isStable();
-      bool isMoveable();
-      bool isDead();
       bool destroy();
   
       std::string getSymbol() { return this->symbol; }
 
-      virtual bool checkCollision(Entity *);
-      virtual bool collision(Entity *) = 0;
-      virtual void update(float) = 0;
+      virtual void update();
 };
 
 #endif

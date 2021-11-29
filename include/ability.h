@@ -1,18 +1,17 @@
 #ifndef ABILITY_H_
 #define ABILITY_H_
 
-class Ability : public Stable
+class Ability : public Entity
 {
   protected:
-    Coord coords;
+    bool active;
   
   public:
     Ability();
     virtual ~Ability();
 
-    virtual void draw();
-    virtual bool collision(Entity *);
-    virtual void update(float);
+    bool isActive(){ return active; }
+    void setActive(bool active_){ active = active_; }
 };
 
 #endif

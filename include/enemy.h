@@ -7,8 +7,8 @@ class Enemy : public Character
     Enemy();
     virtual ~Enemy();
     
-    Enemy * getEnemy();
-    virtual void update(float);
+    void setRandomDirection();
+    virtual void update();
 };
 
 #endif
