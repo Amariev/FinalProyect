@@ -2,7 +2,7 @@
 
 Menu::Menu()
 {
-
+  this->buttonId = 0;
 }
 
 Menu::~Menu()

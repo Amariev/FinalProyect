@@ -8,4 +8,4 @@ bool Stable::isInteractable(){}
 
 void Stable::draw(){}
 bool Stable::collision(Entity *){}
-void Stable::update(float dt_){}
+void Stable::update(){}

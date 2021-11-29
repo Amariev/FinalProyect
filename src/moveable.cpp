@@ -4,5 +4,5 @@ Moveable::Moveable(){}
 Moveable::~Moveable(){}
 
 void Moveable::draw(){}
-bool collision(Entity *){}
-void update(float dt_){}
+bool Moveable::collision(Entity *){}
+void Moveable::update(){}

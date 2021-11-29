@@ -1,7 +1,7 @@
 #ifndef MENU_H_
 #define MENU_H_
 
-enum MenuState { MAIN_MENU = 0, PLAY, EXIT, NEXT, GAME_OVER, OUT };
+enum MenuState { MAIN_MENU = 0, PLAY, EXIT, NEXT, GAME_OVER, OUT, SAVE = 6 };
 
 class Menu
 {

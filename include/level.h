@@ -7,8 +7,6 @@ class Level
     int width;
     int height;
     short levelNumber;
-    int startX;
-    int startY;
     bool isActive;
     bool isCompleted;    
     int points;
@@ -22,8 +20,11 @@ class Level
     Player *& player;
     Interface interface;
 
+    Normal *enemies;
+    int numberEnemies;
+
   public:
-  	Level(Screen &, Player *&);
+  	Level(Screen &, Player *&, int);
 	  ~Level();
 
     void setLevelNumber(unsigned short levelNumber_) { this->levelNumber = levelNumber_; }
@@ -35,11 +36,12 @@ class Level
     int getPoints() { return this->points; }
     int getTime() { return this->time; }
 
-    void generate(Screen &);
+    void generateMap(Screen &);
+    void generateEnemy(Screen &);
     void updateLevel(float);
-    void checkCollisions();
+    void checkCollisions(Screen &);
     void update();
-    void draw();
+    void draw(Screen &);
 
     bool play(Screen &, Player *&);
 };

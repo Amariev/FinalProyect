@@ -27,7 +27,7 @@ void Game::run()
           switch (menuState->getMenuState())
           {
             case MenuState::MAIN_MENU: {
-              menuState = mainMenu;
+              menuState = new MainMenu();
               menuState->setMenuState(MenuState::MAIN_MENU);
               menuState->run(this->screen);
               break;
@@ -53,18 +53,47 @@ void Game::run()
         Engine *engine = new Engine(this->screen);
         engine->run(this->screen);
         this->updateScore(engine->getPoints(), engine->getTime());
-        this->state = GameState::MENU;
+        this->state = GameState::GAMEOVER;
+        
+        menuState = new GameOver();
         menuState->setMenuState(MenuState::GAME_OVER);
         delete engine;
         
         break;
       }
-      case GameState::END: {
+      case GameState::GAMEOVER: {
+        bool flag = true;
+        while (menuState->getMenuState() != OUT && flag) {
+          menuState->run(this->screen);
+          switch (menuState->getMenuState())
+          {
+            case MenuState::PLAY: {
+              this->state = GameState::GAME;
+              menuState->setMenuState(MenuState::OUT);
+              break;
+            }
+            case MenuState::SAVE: {
+              this->state = GameState::MENU;
+              menuState->setMenuState(MenuState::MAIN_MENU);
+              flag = false;
+              break;
+            }
+            case MenuState::EXIT: {
+              menuState->setMenuState(MenuState::OUT);
+              this->state = GameState::END;
+              break;
+            }
+            default: {
+              break;
+            }
+          }  
+        }
+
+        // std::cout << this->state << std::endl;
+        // std::cout << menuState->getMenuState() << std::endl;
         break;
       }
-      default: {
-        break;
-      }
+      default: break;
     }
   }
 }

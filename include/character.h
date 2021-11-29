@@ -6,12 +6,7 @@ enum Direction { UNKNOWN = 0, LEFT, RIGHT, UP, DOWN };
 class Character : public Moveable
 {
   protected:
-    std::string name;
-  
-    Coord movement;
-    Coord lastMovement;
-
-    Direction lastDirection;
+    Direction direction;
     
     float moveSpeed;
     bool pendingAbility;
@@ -20,12 +15,6 @@ class Character : public Moveable
     Character();
     virtual ~Character();
 
-    Direction getLastDirection();
-    Coord getLastMovement();
-
-    void setX(int);
-    void setY(int);
-    void setName(const std::string &name_) { this->name = name_; };
     void setDirection(bool);
     void setCollisionState(bool);
 
@@ -33,7 +22,7 @@ class Character : public Moveable
     
     virtual void draw();
     virtual bool collision(Entity *);
-    virtual void update(float);
+    virtual void update();
 };
 
 #endif

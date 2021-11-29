@@ -20,6 +20,7 @@
 
 #include "menu.h"
 #include "main-menu.h"
+#include "game-over.h"
 #include "next-level.h"
 #include "end-game.h"
 #include "moveable.h"
@@ -28,7 +29,7 @@
 #include "power-up.h"
 #include "tile.h"
 #include "ability.h"
-#include "game-over.h"
+
 #include "player.h"
 #include "enemy.h"
 #include "bomb.h"

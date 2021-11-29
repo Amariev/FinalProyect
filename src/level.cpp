@@ -1,12 +1,14 @@
 #include "../include/basic.h"
 
-Level::Level(Screen & screen_, Player *& player_) :
+Level::Level(Screen & screen_, Player *& player_, int numberEnemies_) :
   screen(screen_), player(player_), interface(player_)
 {
   this->isActive = true;
 	this->isCompleted = false;
-  this->startX = 5;
-	this->startY = 5;
+  this->numberEnemies = numberEnemies_;
+  this->enemies = new Normal[this->numberEnemies];
+
+  this->player->setPosition({ 1, screen_.getHeight() });
 }
 
 Level::~Level()
@@ -14,7 +16,7 @@ Level::~Level()
   ;
 }
 
-void Level::generate(Screen & screen_)
+void Level::generateMap(Screen & screen_)
 {
   int rows = screen_.getHeight();
   int cols = screen_.getWidth();
@@ -48,53 +50,121 @@ void Level::generate(Screen & screen_)
       }
     }
   }
+}
 
+void Level::generateEnemy(Screen & screen_)
+{
+  int rows = screen_.getHeight();
+  int cols = screen_.getWidth();
 
-  for (int i = 0; i < rows + 2; i++) {
-    for (int j = 0; j < cols + 2; j++) {
-      TileType type = TileType(screen_.getSelf()[i][j]);
-      Tile * tile = new Tile;
-      tile = tile->getTilePointer(type);
-      tile->setCoords({ i, j });
-      this->tiles.push_back(tile);
-    }
+  // srand(time(NULL));
+  int x, y;
+  for (int i = 0; i < this->numberEnemies; i++) {
+    do{
+      y = rand()% rows + 1;
+            /* if (y < (rows / 3)) {
+              x = rand() % cols + 1;
+            } else {
+              x = rand() % cols + (3 * cols / 4);
+            } */
+            x = rand() % cols + 1;
+    } while(screen_.getSelf()[y][x]!=0);
+    enemies[i].setPosition({x, y});
+    enemies[i].setRandomDirection();
   }
 }
 
-void Level::checkCollisions()
+void Level::checkCollisions(Screen & screen_)
 {
-  ;
+  // int rows = screen_.getHeight();
+  // int cols = screen_.getWidth();
+    
+  Coord position = player->getPosition();
+  switch(screen_.getSelf()[position.Y][position.X])
+  {
+    case TileType::ENEMY:
+      this->isCompleted = true;
+      break;
+    case TileType::STONE:
+      player->setPosition(player->getLastPosition());
+      break;
+    default:
+      break;
+  }
+
+  for (int i = 0; i < numberEnemies; i++) {
+    Coord enemyPosition = enemies[i].getPosition();
+    switch (screen_.getSelf()[enemyPosition.Y][enemyPosition.X]) {
+      case TileType::STONE:
+        enemies[i].setPosition(enemies[i].getLastPosition());
+        enemies[i].setRandomDirection();
+        break;
+      default: break;
+      }
+  }
 }
 
 void Level::update()
 {
-  ;
+   for (int i = 0; i < numberEnemies; i++) {
+    enemies[i].update();
+   }
+
+  this->player->update();
 }
 
-void Level::draw()
+void Level::draw(Screen & screen_)
 {
-  for (std::vector<Tile *>::iterator it = this->tiles.begin(); it != this->tiles.end(); ++it)
-  {
-    if (*it == nullptr) continue;
+  // Pendiente de movear al screen
+  int rows = screen_.getHeight();
+  int cols = screen_.getWidth();
 
-    this->screen.draw((*it));
+  for (int i = 0; i < rows + 2; i++) {
+    for (int j = 0; j < cols + 2; j++) {
+      switch (screen_.getSelf()[i][j]) {
+      case TileType::STONE:
+        std::cout << ":3";
+        break;
+      case TileType::PLAYER:
+        std::cout << BLUE << "<>" << NC;
+        break;
+      case TileType::ENEMY:
+        std::cout << RED << "/\\" << NC;
+        break;
+      default:
+        std::cout << "  ";
+        break;
+      }
+    }
+
+    std::cout << "\n";
+    }
+
+  screen_.assignEntity(player->getLastPosition(), player->getPosition(), TileType::PLAYER);
+  for (int i = 0; i < numberEnemies; i++) {
+    Coord position = enemies[i].getPosition();
+
+    std::cout << position.X << "-" << position.Y << std::endl;
+
+    if (position.X >= 1 && position.X <= cols && position.Y >= 1 && position.Y <= rows) {
+      screen_.assignEntity(enemies[i].getLastPosition(), enemies[i].getPosition(), TileType::ENEMY);
+    }
   }
+  
   this->screen.display();
 }
 
 bool Level::play(Screen & screen_, Player *& player_)
 {
-  this->generate(screen_);
-  
-  std::cout << "aaaaaa" << std::endl;
+  this->generateMap(screen_);
+  this->generateEnemy(screen_);
 
-  // while(this->isActive)
-  // {
-  //   // this->checkCollisions();
-  //   // this->update();
-  //   // this->draw();
-  //   ;
-  // }
+  while(!this->isCompleted)
+  {
+    this->update();
+    this->checkCollisions(screen_);
+    this->draw(screen_);
+  }
 
   return this->isCompleted;
 }

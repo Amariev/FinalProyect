@@ -21,7 +21,7 @@ class Stable : public Entity
 
     virtual void draw();
     virtual bool collision(Entity *);
-    virtual void update(float);
+    virtual void update();
 };
 
 #endif

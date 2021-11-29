@@ -8,7 +8,7 @@ class Entity
       bool canMove;
       int ID;
 
-      Coord coords;
+      Coord position;
 
       std::string symbol;
 
@@ -18,9 +18,9 @@ class Entity
 
       int getID() { return this->ID; }
 
-      Coord getCoords() { return this->coords; }
+      Coord getPosition() { return this->position; }
 
-      void setCoords(Coord coords_) { this->coords = coords_; }
+      void setPosition(Coord position_) { this->position = position_; }
 
       bool isStable();
       bool isMoveable();
@@ -31,7 +31,7 @@ class Entity
 
       virtual bool checkCollision(Entity *);
       virtual bool collision(Entity *) = 0;
-      virtual void update(float) = 0;
+      virtual void update();
 };
 
 #endif

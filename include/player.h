@@ -15,7 +15,7 @@ class Player : public Character
 
       Player * getPlayer();
 
-      virtual void update(float);
+      virtual void update();
 
       virtual bool castAbility();
       virtual Ability * getAbility();

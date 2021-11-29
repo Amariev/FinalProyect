@@ -1,8 +1,6 @@
 #ifndef TILE_H_
 #define TILE_H_
 
-enum TileType { BLANK = 0, STONE };
-
 class Tile : public Stable
 {
   TileType type;

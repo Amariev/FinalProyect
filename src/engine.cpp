@@ -8,7 +8,7 @@ Engine::Engine(Screen & screen_)
 
   this->player = new Player();
 
-  Level *const level1 = new Level(screen_, this->player);
+  Level *const level1 = new Level(screen_, this->player, 8);
   this->levels.push_back(level1);
   // Level *const level2 = new Level(screen_, this->player);
   // this->levels.push_back(level2);

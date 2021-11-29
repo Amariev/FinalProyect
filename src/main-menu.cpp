@@ -15,7 +15,7 @@ MainMenu::MainMenu()
 
     this->buttons.push_back(btn);
   }
-
+  this->buttons[this->buttonId]->setIcon("*");
   this->menuState = MenuState::MAIN_MENU;
 }
 
