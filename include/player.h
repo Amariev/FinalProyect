@@ -28,7 +28,7 @@ class Player : public Character
       void setAbilityCast(bool abilityCast_) { this->abilityCast = abilityCast_; }
 
       virtual void update();
-      virtual bool castAbility();
+      virtual void castAbility();
 };
 
 #endif

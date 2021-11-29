@@ -2,13 +2,14 @@
 
 Bomb::Bomb()
 {
+  this->active = false;
   this->time = 0;
   this->tick = 0;
 }
 
-Bomb::~Bomb()
+Bomb::~Bomb() 
 {
-  this->active = false;
+    ;
 }
 
 void Bomb::tickTime(){

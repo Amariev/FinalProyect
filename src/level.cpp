@@ -161,7 +161,8 @@ void Level::draw(Screen & screen_)
         std::cout << RED << "/\\" << NC;
         break;
       case TileType::BOMB: 
-        std::cout << RED << "\U0001f4a3" << NC;
+        // std::cout << RED << "\U0001f4a3" << NC;
+        std::cout << RED << "kk" << NC;
         break;
       default:
         std::cout << "  ";

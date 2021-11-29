@@ -48,7 +48,7 @@ void Player::update() {
   this->direction = Direction::UNKNOWN;
 }
 
-bool Player::castAbility()
+void Player::castAbility()
 {
   if (this->availableBombs > 0) {
     if (this->availableBombs) {
