@@ -13,6 +13,7 @@ class Entity
       virtual ~Entity();
 
       Coord getPosition() { return this->position; }
+
       void setPosition(Coord position_) { this->position = position_; }
 
       bool destroy();

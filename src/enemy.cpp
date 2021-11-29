@@ -5,6 +5,7 @@ Enemy::~Enemy() { ; }
 
 void Enemy::update() { ; }
 
+
 void Enemy::setRandomDirection()
 {
     int x = rand() % 4 + 1;

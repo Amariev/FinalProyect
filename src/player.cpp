@@ -14,6 +14,7 @@ Player::~Player()
 }
 
 void Player::update() {
+  this->lastPosition = position;
   if (kbhit()) 
     {
       switch (getch()) 
@@ -42,6 +43,7 @@ void Player::update() {
       	default: break;
     }
   }
+  
   this->move();
   this->direction = Direction::UNKNOWN;
 }

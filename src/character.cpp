@@ -46,4 +46,5 @@ void Character::update()
       break;
     default: break;
    }
+
 }

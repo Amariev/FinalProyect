@@ -99,7 +99,7 @@ void Level::checkCollisions(Screen & screen_)
       default: break;
       }
   }
-
+  
   for (int i = 0; i < this->player->getTotalBombs(); i++) {
     auto bomb = this->player->getBombs()[i];
     Coord bombPosition = bomb.getPosition();

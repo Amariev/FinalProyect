@@ -27,6 +27,7 @@ class Level
     void generateEnemy(Screen &);
     void updateLevel(float);
     void checkCollisions(Screen &);
+
     void update(Screen &);
     void draw(Screen &);
 

@@ -15,10 +15,12 @@ class Character : public Entity
 
     Coord getLastPosition() { return this->lastPosition; }
 
+
     void setDirection(Direction);
     void move();
     
     virtual void draw();
+
     virtual void update();
 };
 

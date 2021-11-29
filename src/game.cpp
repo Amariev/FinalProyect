@@ -52,6 +52,7 @@ void Game::run()
       case GameState::GAME: {
         Engine *engine = new Engine(this->screen);
         engine->run(this->screen);
+
         this->state = GameState::GAMEOVER;
         
         menuState = new GameOver();
