@@ -1,4 +1,5 @@
 #include "../include/level.h"
+#include<thread>
 
 Level::Level() {
   width = 25;
@@ -18,7 +19,8 @@ Level::~Level() {
 
 // cambio de nivel
 void Level::change_level() {
-  delete board;
+    sleep(3);
+    // delete board;
   width += 2;
   height += 2;
   this->board = new Board(width, height, 3);
@@ -34,8 +36,9 @@ void Level::reset_game() {}
 //   else return 0;
 // }
 
-void Level::draw() {
-      std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n" << std::endl;
+bool Level::draw() {
+  // std::thread hilo1(&Level::change_level, this);
+  // hilo1.join();
   // std::cout << "\033[2J\033[1;1H";
-  board->update();
+  return board->update();
 }

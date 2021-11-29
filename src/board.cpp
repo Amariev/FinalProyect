@@ -1,7 +1,10 @@
 #include "../include/board.h"
 #include <cstdlib>
 
-Board::Board() {}
+Board::Board() 
+{
+  this->isOver = false;
+}
 
 // implementar cols+2 rows+2
 Board::Board(int _cols, int _rows, int _normalE) : cols{_cols}, rows{_rows}, numNormalE(_normalE){
@@ -99,7 +102,7 @@ void Board::assignBox(Coord pos, material mat) {
 
 void Board::checkCollisionPlayer() {
     switch (matrix[player.getPos().Y][player.getPos().X]) {
-    // case ENEMY: gameover = 1;  break;
+    case ENEMY: this->isOver = true;  break;
     case WALL:
         player.setPos(player.getOldPos());
     default:
@@ -148,7 +151,7 @@ void Board::assignEnemyBox(){
     }
 }
 
-void Board::update() {
+bool Board::update() {
   player.update();
   checkCollisionEnemy();
   checkCollisionPlayer();
@@ -156,4 +159,6 @@ void Board::update() {
   assignBox(player.getPos(), PLAYER);
   assignEnemyBox();
   draw();
+
+  return this->isOver;
 }

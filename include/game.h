@@ -12,7 +12,8 @@
 enum GameState {
     MENU = 0,
     RUN = 1,
-    END = 2,
+    GAMEOVER = 2,
+    END = 3,
 }; 
 
 class Game

@@ -23,6 +23,6 @@ class Level
         void reset_game();
         bool ended();
 
-        void draw();
+        bool draw();
 };
 #endif

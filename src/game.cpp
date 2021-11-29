@@ -90,11 +90,23 @@ void Game::run() {
       case GameState::RUN: {
         // input();
         clearScreen();
-        level.draw();
+        if (level.draw())
+          this->state = GameState::GAMEOVER;
         break;
       }
-      case GameState::END:{
-        delete mainMenu;
+      case GameState::GAMEOVER:{
+        clearScreen();
+        menuState = new GameOver;
+        this->state = GameState::GAMEOVER;
+        menuState->setMenuState(MenuState::GAME_OVER);
+        menuState->run();
+        if (menuState->getMenuState() == MenuState::SAVE)
+        {
+          this->save();
+          this->state = GameState::END;
+        }
+        else if (menuState->getMenuState() == MenuState::EXIT)
+          this->state = GameState::END;
         break;
       }
       default:{
@@ -106,5 +118,8 @@ void Game::run() {
 
 void Game::save()
 {
+  std::cout << "----" << std::endl;
+  Register *reg = new Register("ROOT", "1");
+  this->registerDb->add(reg);
   this->registerDb->write();
 }

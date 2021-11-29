@@ -17,13 +17,15 @@ enum material {
 
 class Board
 {
-public:
+  public:
     int cols;
     int rows;
     int **matrix;
     int numNormalE;
     NormalEnemy *enemyN;
     Player player;
+
+    bool isOver;
 
     Board();
     Board(int, int, int);
@@ -36,7 +38,7 @@ public:
     void checkCollisionPlayer();
     void checkCollisionEnemy();
     void draw();
-    void update();
+    bool update();
 
     void initializeEnemies();
 };

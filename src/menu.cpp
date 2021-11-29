@@ -128,3 +128,65 @@ void Play::run()
 {
     //agregar 
 }
+
+GameOver::GameOver()
+{
+  ;
+}
+
+GameOver::~GameOver()
+{
+  ;
+}
+
+void GameOver::run()
+{
+  
+  // std::cout << this->getMenuState() << "-" << GAME_OVER << std::endl;
+ 
+  // while(this->getMenuState() == GAME_OVER){
+  //   this->draw();
+  //   std::string option;
+  //   std::cout << "Ingresa causa: ";
+  //   std::cin >> option;
+
+  //   if (option.length() == 1) {
+  //     std::cout << "aaaaaa" << std::endl;
+  //     switch(option[0]) {
+  //     case '1':
+  //       this->setMenuState(MenuState::EXIT);
+  //       return;
+  //     case '2':
+  //       this->setMenuState(MenuState::SAVE);
+  //       return;
+  //     default: break;  
+  //     } 
+  //   }
+  // }
+
+  this->draw();
+  std::string option;
+  cout << "Elige una opcion" "\u27EB" " ";
+  std::cin >> option;
+
+  if (option.length() == 1) {
+    switch(option[0]) {
+      case '1':
+        this->setMenuState(MenuState::SAVE);
+        return;
+      case '2':
+        this->setMenuState(MenuState::EXIT);
+        return;
+      default: break;  
+    } 
+  }
+}
+
+void GameOver::draw()
+{
+  Menu::draw();
+  cout << "\u2776" << "   Save" << endl;
+  cout << "\u2777" << "   Exit" << endl;
+}
+
+

@@ -20,6 +20,7 @@ class Database
     void read();
     void write();
 
+    void add(T *);
     Array<T *> getAll();
     T * getOne(int);
 };
@@ -73,10 +74,17 @@ void Database<T>::write()
     std::ofstream ofs;
     ofs.open(this->fileName, std::ofstream::out);
     for ( int i = 0; i < this->source.getSize() ; ++i) { 
-      ofs << this->source.at(i)->toString() << std::endl;
+      ofs << this->source.at(i)->toString()<< std::endl;
     }
     ofs.close();
 }
+
+template<typename T>
+void Database<T>::add(T * item_)
+{
+  this->source.push_back(item_);
+}
+
 
 template<typename T>
 Array<T *> Database<T>::getAll()
