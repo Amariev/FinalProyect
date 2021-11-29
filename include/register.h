@@ -19,5 +19,5 @@ class Register
   private:
   string name;
   int score; 
-}
+};
 #endif
