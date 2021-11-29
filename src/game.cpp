@@ -10,7 +10,9 @@ Game::Game(Screen & screen_) : screen (screen_)
 
 Game::~Game() 
 {
-  ;
+  if(registerDb!=nullptr){
+    delete registerDb;
+  }
 }
 
 void Game::run() 

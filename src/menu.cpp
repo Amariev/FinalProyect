@@ -7,7 +7,11 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-  ;
+  for(auto b : buttons){
+    if(b!=nullptr){
+      delete b;
+    }
+  }
 }
 
 void Menu::moveUp()

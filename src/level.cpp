@@ -12,8 +12,13 @@ Level::Level(Screen & screen_, Player *& player_, int numberEnemies_) :
 
 Level::~Level()
 {
-  // implementar desctructor
-  ;
+  if(player!=nullptr){
+    delete player;
+  }
+  if (enemies != nullptr) {
+    delete[] enemies;
+  }
+  numberEnemies = 0;
 }
 
 void Level::generateMap(Screen & screen_)
