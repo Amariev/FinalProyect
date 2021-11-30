@@ -10,10 +10,7 @@ Player::Player(int numberBombs_): numberBombs(numberBombs_)
 
 Player::~Player()
 {
-  if(bombs!=nullptr){
-    delete [] bombs;
-  } 
-  numberBombs = 0;
+  ;
 }
 
 void Player::update() {

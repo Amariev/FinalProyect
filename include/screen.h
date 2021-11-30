@@ -21,6 +21,7 @@ class Screen
     ~Screen();
 
     void generateTime();
+    void generateMap();
 
     int getWidth() { return this->width; }
     int getHeight() { return this->height; }
@@ -30,6 +31,7 @@ class Screen
     void assignEntity(Coord, TileType);
     void assignEntity(Coord, Coord, TileType);
     void draw(std::string);
+    void draw();
     void display();
 };
 

@@ -10,51 +10,9 @@ Level::Level(Screen & screen_, Player *& player_, int numberEnemies_) :
   this->player->setPosition({ 1, screen_.getHeight() });
 }
 
-Level::~Level()
+Level::~Level() 
 {
-  if(player!=nullptr){
-    delete player;
-  }
-  if (enemies != nullptr) {
-    delete[] enemies;
-  }
-  numberEnemies = 0;
-}
-
-void Level::generateMap(Screen & screen_)
-{
-  int rows = screen_.getHeight();
-  int cols = screen_.getWidth();
-
-  for (int i = 0; i < rows + 2; i++) {
-    for (int j = 0; j < cols + 2; j++) {
-      if (i == 0 || j == 0 || i == (rows + 2) - 1 || j == (cols + 2) - 1) {
-        screen_.getSelf()[i][j] = TileType::STONE;
-      } else {
-        screen_.getSelf()[i][j] = TileType::BLANK;
-      }
-    }
-  }
-
-  int FParedes = 8;
-  int den = (rows+2) * (cols+2) / 4;
-  for (int i = 0; i < den; i++) {
-    int x = rand() % ((cols+2) - 4) + 2;
-    x = (x / 2) * 2;
-    int y = rand() % ((rows+2) - 4) + 2;
-    y = (y / 2) * 2;
-    screen_.getSelf()[y][x] = TileType::STONE;
-    for (int j = 0; j < FParedes; j++) {
-      int mx[4] = {x, x, x + 2, x - 2};
-      int my[4] = {y + 2, y - 2, y, y};
-      int r = rand() % 4;
-
-      if (screen_.getSelf()[my[r]][mx[r]] == TileType::BLANK) {
-        screen_.getSelf()[my[r]][mx[r]] = TileType::STONE;
-        screen_.getSelf()[my[r] + (y - my[r]) / 2][mx[r] + (x - mx[r]) / 2] = TileType::STONE;
-      }
-    }
-  }
+  if(enemies!=nullptr) delete enemies;
 }
 
 void Level::generateEnemy(Screen & screen_)
@@ -147,38 +105,15 @@ void Level::update(Screen & screen_)
   this->player->update();
 }
 
-void Level::draw(Screen & screen_)
+void Level::draw(Screen &screen_) 
 {
-  // Pendiente de movear al screen
+  screen_.draw();
   int rows = screen_.getHeight();
   int cols = screen_.getWidth();
 
-  for (int i = 0; i < rows + 2; i++) {
-    for (int j = 0; j < cols + 2; j++) {
-      switch (screen_.getSelf()[i][j]) {
-      case TileType::STONE:
-        std::cout << ":3";
-        break;
-      case TileType::PLAYER:
-        std::cout << BLUE << "<>" << NC;
-        break;
-      case TileType::ENEMY:
-        std::cout << RED << "/\\" << NC;
-        break;
-      case TileType::BOMB: 
-        // std::cout << RED << "\U0001f4a3" << NC;
-        std::cout << RED << "kk" << NC;
-        break;
-      default:
-        std::cout << "  ";
-        break;
-      }
-    }
+  screen_.assignEntity(player->getLastPosition(), player->getPosition(),
+                       TileType::PLAYER);
 
-    std::cout << "\n";
-    }
-
-  screen_.assignEntity(player->getLastPosition(), player->getPosition(), TileType::PLAYER);
   for (int i = 0; i < numberEnemies; i++) {
     Coord position = enemies[i].getPosition();
 
@@ -192,7 +127,7 @@ void Level::draw(Screen & screen_)
 
 bool Level::play(Screen & screen_, Player *& player_)
 {
-  this->generateMap(screen_);
+  screen_.generateMap();
   this->generateEnemy(screen_);
 
   while(!this->isCompleted)

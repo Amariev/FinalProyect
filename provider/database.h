@@ -30,11 +30,7 @@ Database<T>::Database(std::string fileName_, int propertySize_): fileName(fileNa
 template<typename T>
 Database<T>::~Database()
 {
-  for(auto s : source){
-    if(s!=nullptr){
-      delete s;
-    }
-  }
+  ;
 }
 
 template<typename T>

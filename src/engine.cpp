@@ -18,18 +18,9 @@ Engine::Engine(Screen & screen_)
 	}
 }
 
-Engine::~Engine() 
+Engine::~Engine()
 {
-  for (auto l : levels) {
-    if (l != nullptr) {
-      delete l;
-    }
-  }
-  levels.clear();
-
-  if(player!=nullptr){
-    delete player;
-  }
+  ;
 }
  
 void Engine::run(Screen & screen_)

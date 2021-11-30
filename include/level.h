@@ -23,7 +23,6 @@ class Level
     void setLevelNumber(unsigned short levelNumber_) { this->levelNumber = levelNumber_; }
 	  void setLevelName(const std::string levelName_) { this->levelName = levelName_; }
 
-    void generateMap(Screen &);
     void generateEnemy(Screen &);
     void updateLevel(float);
     void checkCollisions(Screen &);
