@@ -10,7 +10,7 @@ Game::Game(Screen & screen_) : screen (screen_)
 
 Game::~Game() 
 {
-  ;
+  if(registerDb!=nullptr) delete registerDb;
 }
 
 void Game::run() 
@@ -53,11 +53,11 @@ void Game::run()
         Engine *engine = new Engine(this->screen);
         engine->run(this->screen);
 
+        delete engine;
         this->state = GameState::GAMEOVER;
         
         menuState = new GameOver();
         menuState->setMenuState(MenuState::GAME_OVER);
-        delete engine;
         
         break;
       }

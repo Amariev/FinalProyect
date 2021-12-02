@@ -1,5 +1,5 @@
-#ifndef NEXT_LEVEL_H_
-#define NEXT_LEVEL_H_
+#ifndef next_level_h_
+#define next_level_h_
 
 class NextLevel : public Menu
 {

@@ -1,11 +1,19 @@
 #include "../include/basic.h"
 
 Screen::Screen() { ; }
-Screen::~Screen() { ; }
+
+Screen::~Screen() 
+{ 
+  for(int i=0; i<height; i++){
+    delete self[i];
+  }
+  delete[] self;
+  height = 0;
+  width = 0;
+}
 
 void Screen::create(int width_, int height_, std::string name_)
 {
-  this->name = name_;
   this->height = height_;
   this->width = width_;
   this->self = new int *[height_ + 2];

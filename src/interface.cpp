@@ -7,7 +7,10 @@ Interface::Interface(Player * & player_) : player (player_)
 
 Interface::~Interface()
 {
-  ;
+  for(auto b : buttons){
+    if(b!=nullptr) delete b;
+  }
+  buttons.clear();
 }
 
 void Interface::draw(Screen & screen_)

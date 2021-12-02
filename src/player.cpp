@@ -8,9 +8,9 @@ Player::Player(int numberBombs_): numberBombs(numberBombs_)
   this->currentBombId = this->availableBombs - 1; 
 }
 
-Player::~Player()
+Player::~Player() 
 {
-  ;
+  delete [] bombs;
 }
 
 void Player::update() {
