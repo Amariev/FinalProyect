@@ -12,7 +12,7 @@ Level::Level(Screen & screen_, Player *& player_, int numberEnemies_) :
 
 Level::~Level() 
 {
-  if(enemies!=nullptr) delete enemies;
+if(enemies!=nullptr) delete enemies;
 }
 
 void Level::generateEnemy(Screen & screen_)
