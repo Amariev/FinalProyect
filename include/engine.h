@@ -4,9 +4,9 @@
 #define LEVELS_QUANTITY 7
 #define STARTING_LEVEL_NUMBER 1
 
-class Engine
+class Engine 
 {
-    protected:
+    private:
       int totalLevels;
       int currentLevel;
       bool running;

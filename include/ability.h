@@ -8,7 +8,7 @@ class Ability : public Entity
   
   public:
     Ability();
-    virtual ~Ability();
+    ~Ability();
 
     bool isActive(){ return active; }
     void setActive(bool active_){ active = active_; }

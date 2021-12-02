@@ -1,9 +1,9 @@
 #ifndef BUTTON_H_
 #define BUTTON_H_
 
-class Button
+class Button 
 {
-    protected:
+    private:
       std::string name;
       std::string icon;
 

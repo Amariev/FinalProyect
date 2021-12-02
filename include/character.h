@@ -11,7 +11,7 @@ class Character : public Entity
 
   public:
     Character();
-    virtual ~Character();
+    ~Character();
 
     Coord getLastPosition() { return this->lastPosition; }
 
@@ -19,9 +19,7 @@ class Character : public Entity
     void setDirection(Direction);
     void move();
     
-    virtual void draw();
-
-    virtual void update();
+    void update();
 };
 
 #endif

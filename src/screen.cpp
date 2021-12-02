@@ -125,6 +125,6 @@ void Screen::nextLevel(){
 
 void Screen::display()
 {
-  usleep(50 * 1000);
+  usleep(70 * 1000);
   std::cout << "\033[2J\033[1;1H";
 }

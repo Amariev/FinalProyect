@@ -5,10 +5,10 @@ class Enemy : public Character
 {
   public:
     Enemy();
-    virtual ~Enemy();
+    ~Enemy();
     
     void setRandomDirection();
-    virtual void update();
+    void update();
 };
 
 #endif
