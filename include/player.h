@@ -27,8 +27,8 @@ class Player : public Character
       void setAvailableBombs(int availableBombs_) { this->availableBombs = availableBombs_; }
       void setAbilityCast(bool abilityCast_) { this->abilityCast = abilityCast_; }
 
-      virtual void update();
-      virtual void castAbility();
+      void update();
+      void castAbility();
 };
 
 #endif

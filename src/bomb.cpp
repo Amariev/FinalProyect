@@ -14,7 +14,7 @@ Bomb::~Bomb()
 
 void Bomb::tickTime(){
   time++;
-  if(time%70 == 0){
+  if(time%10 == 0){
     tick++;
     if(tick==3){
       destroy();

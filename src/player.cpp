@@ -36,7 +36,7 @@ void Player::update() {
         case 'D':
           this->direction = Direction::RIGHT;
           break;
-        case 32:
+        case 32: 
           this->castAbility();
           break;
         break;
@@ -65,19 +65,6 @@ void Player::setBombPosition(){
   int x = this->position.X;
   int y = this->position.Y;
   bombs[currentBombId].setActive(true);
-  switch(direction){
-    case Direction::UP:
-      bombs[currentBombId].setPosition({x, y-1});
-      break;
-    case Direction::DOWN:
-      bombs[currentBombId].setPosition({x, y+1});
-      break;
-    case Direction::RIGHT:
-      bombs[currentBombId].setPosition({x+1, y});
-      break;
-    case Direction::LEFT:
-      bombs[currentBombId].setPosition({x-1, y-1});
-      break;
-      default: break;
-  }
+  bombs[currentBombId].setPosition({x, y});
+
 }

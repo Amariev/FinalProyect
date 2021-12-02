@@ -27,11 +27,12 @@ class Screen
     int getHeight() { return this->height; }
     int ** getSelf() { return this->self; }
 
-    void create(int, int, std::string);
+    void create(int, int);
     void assignEntity(Coord, TileType);
     void assignEntity(Coord, Coord, TileType);
     void draw(std::string);
     void draw();
+    void nextLevel();
     void display();
 };
 

@@ -12,7 +12,7 @@ Level::Level(Screen & screen_, Player *& player_, int numberEnemies_) :
 
 Level::~Level() 
 {
-if(enemies!=nullptr) delete enemies;
+if(enemies!=nullptr) delete [] enemies;
 }
 
 void Level::generateEnemy(Screen & screen_)
@@ -105,8 +105,8 @@ void Level::update(Screen & screen_)
   this->player->update();
 }
 
-void Level::draw(Screen &screen_) 
-{
+void Level::draw(Screen &screen_) {
+  std::cout << "\t" << levelName << std::endl;
   screen_.draw();
   int rows = screen_.getHeight();
   int cols = screen_.getWidth();
@@ -130,8 +130,7 @@ bool Level::play(Screen & screen_, Player *& player_)
   screen_.generateMap();
   this->generateEnemy(screen_);
 
-  while(!this->isCompleted)
-  {
+  while (!this->isCompleted) {
     screen_.generateTime();
     this->update(screen_);
     this->checkCollisions(screen_);
