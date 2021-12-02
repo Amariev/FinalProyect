@@ -5,7 +5,7 @@ Game::Game(Screen & screen_) : screen (screen_)
   std::string databaseName = Resources::databasePath("register.txt");
   this->registerDb = new Database<Register>(databaseName, 2);
   this->registerDb->read();
-  this->screen.create(25, 25, "Ghost Busters");
+  this->screen.create(25, 25);
 }
 
 Game::~Game() 
@@ -53,11 +53,11 @@ void Game::run()
         Engine *engine = new Engine(this->screen);
         engine->run(this->screen);
 
-        delete engine;
         this->state = GameState::GAMEOVER;
         
         menuState = new GameOver();
         menuState->setMenuState(MenuState::GAME_OVER);
+        delete engine;
         
         break;
       }

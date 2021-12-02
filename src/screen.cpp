@@ -1,6 +1,8 @@
 #include "../include/basic.h"
 
-Screen::Screen() { ; }
+Screen::Screen() { 
+  this->name = "GhostBuster";
+}
 
 Screen::~Screen() 
 { 
@@ -12,7 +14,7 @@ Screen::~Screen()
   width = 0;
 }
 
-void Screen::create(int width_, int height_, std::string name_)
+void Screen::create(int width_, int height_)
 {
   this->height = height_;
   this->width = width_;
@@ -91,6 +93,7 @@ void Screen::draw()
   int cols = width;
 
   for (int i = 0; i < rows + 2; i++) {
+    std::cout << "\t";
     for (int j = 0; j < cols + 2; j++) {
       switch (self[i][j]) {
       case TileType::STONE:
@@ -112,6 +115,12 @@ void Screen::draw()
     }
     std::cout << "\n";
   }
+}
+
+void Screen::nextLevel(){
+  height += 2;
+  width += 2;
+  create(width, height);
 }
 
 void Screen::display()
