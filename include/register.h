@@ -3,9 +3,9 @@
 
 #include <string>
 
-class Register
+class Register 
 {
-  protected:
+  private:
     std::string ID;
     std::string score;
     

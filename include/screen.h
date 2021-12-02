@@ -1,11 +1,11 @@
 #ifndef SCREEN_H_
 #define SCREEN_H_
 
-enum TileType { BLANK = 0, STONE, PLAYER, ENEMY, BOMB };
+enum TileType { BLANK = 0, STONE, PLAYER, ENEMY, BOMB, FIRE };
 
-class Screen
+class Screen 
 {
-  protected:
+  private:
     int width;
     int height;
     std::string name;

@@ -3,8 +3,6 @@
 Character::Character() { ; }
 Character::~Character() { ; }
 
-void Character::draw() { ; }
-
 void Character::move() 
 {
   this->lastPosition = position;

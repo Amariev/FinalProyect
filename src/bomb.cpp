@@ -3,6 +3,7 @@
 Bomb::Bomb()
 {
   this->active = false;
+  this->exploded = false;
   this->time = 0;
   this->tick = 0;
 }
@@ -22,6 +23,7 @@ void Bomb::tickTime(){
   }  
 }
 
-void Bomb::destroy(){
+void Bomb::destroy() {
+  this->exploded = true;
   this->active = false;
 }

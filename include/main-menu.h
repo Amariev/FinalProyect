@@ -9,8 +9,8 @@ class MainMenu : public Menu
     MainMenu();
     ~MainMenu();
 
-    virtual void run(Screen &) final;
-    virtual void draw(Screen &) final;
+    void run(Screen &) final;
+    void draw(Screen &) final;
 };
 
 #endif

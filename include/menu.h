@@ -21,8 +21,8 @@ class Menu
 
     void setMenuState(MenuState menuState_) { this->menuState = menuState_; };
 
-    virtual void moveUp();
-    virtual void moveDown(int);
+    void moveUp();
+    void moveDown(int);
 
     virtual void run(Screen &) = 0;
     virtual void draw(Screen &) = 0;

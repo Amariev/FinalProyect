@@ -48,6 +48,8 @@ void Level::checkCollisions(Screen & screen_)
     case TileType::STONE:
       player->setPosition(player->getLastPosition());
       break;
+    case TileType::FIRE:
+      break;
     default:
       break;
   }
@@ -59,6 +61,8 @@ void Level::checkCollisions(Screen & screen_)
         enemies[i].setPosition(enemies[i].getLastPosition());
         enemies[i].setRandomDirection();
         break;
+    case TileType::FIRE:
+      break;
       default: break;
       }
   }
@@ -106,7 +110,8 @@ void Level::update(Screen & screen_)
 }
 
 void Level::draw(Screen &screen_) {
-  std::cout << "\t" << levelName << std::endl;
+  // std::cout << "\t" << levelName << std::endl;
+  screen_.draw("\t"+levelName);
   screen_.draw();
   int rows = screen_.getHeight();
   int cols = screen_.getWidth();
