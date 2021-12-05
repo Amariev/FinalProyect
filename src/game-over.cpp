@@ -69,10 +69,10 @@ void GameOver::run(Screen & screen_)
     this->draw(screen_);
     screen_.display();
   }
-} 
+}
 
-void GameOver::draw(Screen & screen_)
-{
+void GameOver::draw(Screen &screen_) {
+  Menu::draw(screen_);
   for (int i = 0; i < GAME_OVER_BUTTONS_QUANTITY; ++i)
 	{
 		this->buttons[i]->draw(screen_);
