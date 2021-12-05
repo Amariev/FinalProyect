@@ -1,23 +1,21 @@
-#ifndef REGISTER_H
-#define REGISTER_H
+#ifndef REGISTER_H_
+#define REGISTER_H_
 
-#include <fstream>
-using namespace std;
 
-class Register
+class Register 
 {
-  public: 
-  Register(string, int);
-
-  void setName(string);
-  void setScore(int);
-  void getName();
-  void getScore();
-
-  // void escribir();
-
   private:
-  string name;
-  int score; 
+    std::string ID;
+    std::string score;
+    
+  public:
+    Register(std::string, std::string);
+    Register(std::string []);
+    ~Register();
+
+    std::string getID() { return this->ID; }
+    std::string getScore() { return this->score; }
+    std::string toString() { return this->ID + "|" + this->score; }
 };
+
 #endif

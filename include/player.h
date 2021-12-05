@@ -1,29 +1,35 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYER_H_
+#define PLAYER_H_
 
-#include "personaje.h"
-#include "../ext/conio.h"
-#include <string>
+class Player : public Character
+{
+  private:
+    int usedBombs;
+    int availableBombs;
+    int currentBombId;
+    bool abilityCast;
+    Bomb *bombs;
+    int numberBombs;
 
-class Player : public Personaje {
-private: 
-    int velocity;
-    int levelScore;
-    std::string name;
-    int totalScore;
-public:
-    Player();
+    public:
+      Player();
+      ~Player();
+      
+      inline int getUsedBombs() { return this->usedBombs; }
+      inline Bomb * getBombs() { return this->bombs; }
+      inline int getAvailableBombs() { return this->availableBombs; }
+      inline int getCurrentBombId() { return this->currentBombId; }
+      inline bool isAbilityCast() { return this->abilityCast; }
+      inline int getTotalBombs() { return this->numberBombs; }
 
-    Player(Coord, std::string symbol = "<>", int lives = 1,
-           int level_score = 0, int total_score = 0);
+      void setBombPosition();
+      inline void setUsedBombs(int usedBombs_) { this->usedBombs = usedBombs_; }
+      void reloadBombs(int);
+      inline void setAvailableBombs(int availableBombs_) { this->availableBombs = availableBombs_; }
+      inline void setAbilityCast(bool abilityCast_) { this->abilityCast = abilityCast_; }
 
-    void setName(std::string);
-
-    std::string getName();
-
-    void printAttributes();
-
-    void input();
-    void update();
+      void update();
+      void castAbility();
 };
+
 #endif

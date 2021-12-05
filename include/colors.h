@@ -1,5 +1,5 @@
-#ifndef COLORS_H
-#define COLORS_H
+#ifndef COLORS_H_
+#define COLORS_H_
 
 #define NC "\e[0m" // resetear colores
 #define BLACK "\e[0;30m"

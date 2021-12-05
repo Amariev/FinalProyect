@@ -1,84 +1,107 @@
-#include "../include/game.h"
+#include "../include/basic.h"
 
-Game::Game() {
-    this->state = GameState::MENU;
-    Level level;
+Game::Game(Screen & screen_) : screen (screen_)
+{
+  std::string databaseName = Resources::databasePath("register.txt");
+  this->registerDb = new Database<Register>(databaseName, 2);
+  this->registerDb->read();
+  this->screen.create(25, 25);
 }
 
-Game::~Game(){}
-
-GameState Game::getState()
+Game::~Game() 
 {
-    return state;
+  if(registerDb!=nullptr) delete registerDb;
 }
 
-void Game::setState(GameState state_)
+void Game::run() 
 {
-	this->state = state_;
-}
+  Menu *const mainMenu = new MainMenu();
+  auto menuState = mainMenu; 
 
-void Game::clearScreen() 
-{
-    std::cout << "\033[2J\033[1;1H";
-}
-
-void Game::delay(int a)
-{
-    int add=0;
-    int time;
-    
-    time = a * 10000000;
-
-    for (int i = 0; i < time; i++)
+  while(state != END)
+  {
+    switch (this->state)
     {
-        add *= i;
-        add++;
-        add++;
+      case GameState::MENU: {
+        while (menuState->getMenuState() != OUT){
+          switch (menuState->getMenuState())
+          {
+            case MenuState::MAIN_MENU: {
+              menuState = new MainMenu();
+              menuState->setMenuState(MenuState::MAIN_MENU);
+              menuState->run(this->screen);
+              break;
+            }
+            case MenuState::PLAY: {
+              this->state = GameState::GAME;
+              menuState->setMenuState(MenuState::OUT);
+              break;
+            }
+            case MenuState::EXIT: {
+              menuState->setMenuState(MenuState::OUT);
+              this->state = GameState::END;
+              break;
+            }
+            default: {
+              break;
+            }
+          }
+        }
+        break;
+      }
+      case GameState::GAME: {
+        Engine *engine = new Engine(this->screen);
+        engine->run(this->screen);
+
+        this->state = GameState::GAMEOVER;
+        
+        menuState = new GameOver();
+        menuState->setMenuState(MenuState::GAME_OVER);
+        delete engine;
+        
+        break;
+      }
+      case GameState::GAMEOVER: {
+        bool flag = true;
+        while (menuState->getMenuState() != OUT && flag) {
+          menuState->run(this->screen);
+          switch (menuState->getMenuState())
+          {
+            case MenuState::PLAY: {
+              this->state = GameState::GAME;
+              menuState->setMenuState(MenuState::OUT);
+              break;
+            }
+            case MenuState::SAVE: {
+              this->save();
+              this->state = GameState::MENU;
+              menuState->setMenuState(MenuState::MAIN_MENU);
+              flag = false;
+              break;
+            }
+            case MenuState::EXIT: {
+              menuState->setMenuState(MenuState::OUT);
+              this->state = GameState::END;
+              break;
+            }
+            default: {
+              break;
+            }
+          }  
+        }
+        break;
+      }
+      default: break;
     }
+  }
 }
 
-void Game::run() // 
+
+void Game::save()
 {
-    Menu *const mainMenu = new MainMenu();
-    auto menuState = mainMenu;
-    while (state != END) {
-        delay(5);
-        switch (this->state) {
-            case GameState::MENU: {
-                clearScreen();
-                while (menuState->getMenuState() != OUT)
-                {
-                    switch (menuState->getMenuState())
-                    {
-                        case MenuState::MAIN_MENU: {
-                            menuState = mainMenu;
-                            menuState->setMenuState(MenuState::MAIN_MENU);
-                            menuState->run();
-                        }
+  std::string guid = Resources::getUUID();
 
-                        case MenuState::PLAY: {
-                            this->state = GameState::RUN;
-                            menuState->setMenuState(MenuState::OUT);
-                            // delete mainMenu;
-                            level.load_level();
-                        }
-
-                        default: {
-                            break;
-                        }
-                    }
-                }
-                break;
-            }
-            case GameState::RUN: {
-                clearScreen();
-                level.draw();
-                break;
-            }
-
-            default:{
-                break;
-            }
-        }
-    }
+  Register *reg = new Register(guid, "99999");
+  this->registerDb->add(reg);
+  this->registerDb->write();
 }

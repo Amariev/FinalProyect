@@ -1,27 +1,36 @@
-#ifndef LEVEL_H
-#define LEVEL_H
+#ifndef LEVEL_H_
+#define LEVEL_H_
 
-#include "../ext/conio.h"
-#include "board.h"
-
-#include <iostream>
-
-class Level
+class Level 
 {
-   public: 
-        int number;
-        bool complete;
-        int width, height;
-        Board *board;
+  private:
+    short levelNumber;
+    bool isCompleted;    
 
-        Level();
-        ~Level();
+    std::string levelName;
 
-        void load_level();
-        void change_level();
-        void check_end_level();
-        void reset_game();
-        // void complete();
-        void draw();
+    Player *& player;
+    Interface interface;
+
+    Normal *enemies;
+    int numberEnemies;
+
+  public:
+  	Level(Player *&, int);
+	  ~Level();
+
+    inline void setLevelNumber(unsigned short levelNumber_) { this->levelNumber = levelNumber_; }
+    inline void setLevelName(const std::string levelName_) { this->levelName = levelName_; }
+
+    void generateEnemy(Screen &);
+    void updateLevel(float);
+    void checkCollisions(Screen &);
+    void nextLevel(Screen &);
+
+    void update(Screen &);
+    void draw(Screen &);
+
+    bool play(Screen &, Player *&);
 };
+
 #endif

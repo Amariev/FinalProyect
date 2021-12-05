@@ -1,31 +1,13 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef ENEMY_H_
+#define ENEMY_H_
 
-#include "personaje.h"
-
-class Enemy : public Personaje {
-    protected:
-        bool alive;
-
-    public:
-        Enemy();
-
-        Enemy(Coord pos, int lives = 1, 
-                bool alive = true);
-        Enemy(Enemy &o);
-
-        bool isAlive();
-        void setAlive(bool alive);
-        void setRandomDirection();
-        void update();
-        void printAttributes();
-
-};
-
-class NormalEnemy : public Enemy {
-    public:
-      NormalEnemy();
-      NormalEnemy(Coord, int lives, bool alive);
+class Enemy : public Character
+{
+  public:
+    Enemy();
+    ~Enemy();
+    
+    void setRandomDirection();
 };
 
 #endif

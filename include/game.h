@@ -1,34 +1,23 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME_H_
+#define GAME_H_
 
-#include <iostream>
-#include "level.h"
-#include "menu.h"
-#include <ctime>
+enum GameState { MENU = 0, GAME = 1, GAMEOVER = 2, END = 3};
 
-enum GameState {
-    MENU = 0,
-    RUN = 1,
-    END = 2,
-}; 
-
-class Game
+class Game 
 {
-    private:
-      Level level; 
-    public:
-        //Level level; // private
-        Game();
-        ~Game();
-        
-        void run();
+  private:
+    Screen & screen;
+    Database<Register> *registerDb;
+    GameState state;
 
-        GameState getState();
-        void setState(GameState);
-        void delay(int);
+  public:
+    Game(Screen &);
+    ~Game();
 
-    private:
-        GameState state;
-        void clearScreen();
+    inline void setState(GameState state_) { this->state = state_; }
+
+    void run();
+    void save();
 };
+
 #endif

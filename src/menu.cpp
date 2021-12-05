@@ -1,87 +1,34 @@
-#include "../include/menu.h"
-
-// **************MENU***************
+#include "../include/basic.h"
 
 Menu::Menu()
 {
-    menuState = MAIN_MENU;
+  this->buttonId = 0;
 }
 
-Menu::~Menu(){}
-
-MenuState Menu::getMenuState()
+Menu::~Menu()
 {
-    return this->menuState;
-}
-        
-        
-void Menu::setMenuState(MenuState new_menuState)
-{
-    this -> menuState = new_menuState;
+  for(auto b : buttons){
+    if(b!=nullptr) delete b;
+  }
+  buttons.clear();
 }
 
-void Menu::run(){}
-
-void Menu::draw()
+void Menu::moveUp()
 {
-    cout << "\u250C";
-    for(int i = 0; i < 11; ++i)
-    {
-        cout << "\u2500";
-    }
-    cout << "\u2510" << endl;
-    cout << "\u2502" << "    MENU   " << "\u2502" << endl;
-    cout << "\u2514";
-    for(int i = 0; i < 11; ++i)
-    {
-        cout << "\u2500";
-    }
-    cout << "\u2518" << endl;
+	if (this->buttonId - 1 >= 0)
+	{
+    this->buttons[this->buttonId]->setIcon(" ");
+		this->buttonId--;
+    this->buttons[this->buttonId]->setIcon("*");
+	}
 }
 
-//****************MAIN_MENU********************
-
-MainMenu::MainMenu():Menu(){}
-MainMenu::~MainMenu(){}
-
-void MainMenu::draw()
+void Menu::moveDown(int maxNumber_)
 {
-    Menu::draw();
-    cout << "\u2776" << "   New Game" << endl;
-    cout << "\u2777" << "   Score" << endl;
-    cout << "\u2778" << "   Save" << endl;
-    cout << "\u2779" << "   Exit" << endl;
-    cout << "Elige una opcion" "\u27EB" " ";
-}
-
-void MainMenu::run()
-{
-    this->draw();
-    int opcion;
-    cin >> opcion;
-     while (this->getMenuState() == MAIN_MENU)
-     {
-         switch(opcion){
-             case 1:{
-                 this->setMenuState(MenuState::PLAY);
-                 return;
-             }
-         }
-     }
-}
-
-//************PLAY*************
-Play::Play()
-{
-    this->setMenuState(PLAY);
-}
-
-void Play::draw()
-{
-    // agregar opciones 
-}
-
-void Play::run()
-{
-    //agregar 
+	if (this->buttonId + 1 < maxNumber_)
+	{
+		this->buttons[this->buttonId]->setIcon(" ");
+		this->buttonId++;
+    this->buttons[this->buttonId]->setIcon("*");
+	}
 }

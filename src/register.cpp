@@ -1,27 +1,18 @@
-#include "../include/register.h"
+#include "../include/basic.h"
 
-Register::Register(string _name, int _score)
+Register::Register(std::string ID_, std::string score_)
 {
-  setName(_name);
-  setScore(_score);
+  this->ID = ID_;
+  this->score = score_;
 }
 
-void Register::setName(string name)
+Register::Register(std::string args[])
 {
-  this -> name = name;
+  this->ID = args[0];
+  this->score = args[1];
 }
 
-void Register::setScore(int score)
+Register::~Register()
 {
-  this-> score = score;
-}
-
-void Register::getName()
-{
-  cout<< "Nombre: " << name<<endl;
-}
-
-void Register::getScore()
-{
-  cout<< "Puntaje: "<< score << endl;
+  ;
 }

@@ -1,36 +1,151 @@
-#include "../include/level.h"
+#include "../include/basic.h"
 
-Level::Level() {
-  width = 25;
-  height = 25;
-  this->board = new Board(width, height, 2);
+Level::Level(Player *& player_, int numberEnemies_) :
+  player(player_), interface(player_)
+{
+	this->isCompleted = false;
+  this->numberEnemies = numberEnemies_;
+  this->enemies = new Normal[this->numberEnemies];
 }
 
-Level::~Level() {
-  if (board != nullptr) {
-    delete board;
+Level::~Level() 
+{
+  if(enemies!=nullptr) delete [] enemies;
+}
+
+void Level::generateEnemy(Screen & screen_)
+{
+  int rows = screen_.getHeight();
+  int cols = screen_.getWidth();
+
+  // srand(time(NULL));
+  int x, y;
+  for (int i = 0; i < this->numberEnemies; i++) {
+    do{
+      y = rand()% rows + 1;
+            /* if (y < (rows / 3)) {
+              x = rand() % cols + 1;
+            } else {
+              x = rand() % cols + (3 * cols / 4);
+            } */
+            x = rand() % cols + 1;
+    } while(screen_.getSelf()[y][x]!=0);
+    enemies[i].setPosition({x, y});
+    enemies[i].setRandomDirection();
   }
 }
 
-void Level::load_level() {
-  board->generateMatrix();
-  board->maze();
+void Level::checkCollisions(Screen & screen_)
+{
+  Coord position = player->getPosition();
+  switch(screen_.getSelf()[position.Y][position.X])
+  {
+    case TileType::ENEMY:
+      this->isCompleted = true;
+      break;
+    case TileType::STONE:
+      player->setPosition(player->getLastPosition());
+      break;
+    case TileType::FIRE:
+      break;
+    default:
+      break;
+  }
+
+  for (int i = 0; i < numberEnemies; i++) {
+    Coord enemyPosition = enemies[i].getPosition();
+    switch (screen_.getSelf()[enemyPosition.Y][enemyPosition.X]) {
+      case TileType::STONE:
+        enemies[i].setPosition(enemies[i].getLastPosition());
+        enemies[i].setRandomDirection();
+        break;
+    case TileType::FIRE:
+      break;
+      default: break;
+      }
+  }
+  
+  for (int i = 0; i < this->player->getTotalBombs(); i++) {
+    auto bomb = this->player->getBombs()[i];
+    Coord bombPosition = bomb.getPosition();
+    switch (screen_.getSelf()[bombPosition.Y][bombPosition.X]) {
+      case TileType::ENEMY:
+        bomb.setActive(false);
+        screen_.assignEntity(bombPosition, TileType::BLANK);
+        screen_.assignEntity(enemies[i].getPosition(), TileType::BLANK);
+        break;
+      default: break;
+      }
+  }
 }
 
-// cambio de nivel
-void Level::change_level() {
-  delete board;
-  width += 2;
-  height += 2;
-  this->board = new Board(width, height, 3);
+void Level::update(Screen & screen_)
+{
+  for (int i = 0; i < this->player->getTotalBombs(); i++) {
+    auto bomb = this->player->getBombs()[i];
+    if (bomb.isActive()) 
+    {
+      this->player->getBombs()[i].tickTime();
+      screen_.assignEntity(bomb.getPosition(), TileType::BOMB);
+    }
+    else
+    {
+      screen_.assignEntity(bomb.getPosition(), TileType::BLANK);
+    }
+  }
+
+  if (this->player->isAbilityCast())
+  {
+    this->player->setBombPosition();
+    this->player->setAbilityCast(false);
+  }
+
+   for (int i = 0; i < numberEnemies; i++) {
+    enemies[i].update();
+   }
+
+  this->player->update();
 }
 
-// comprobar el nivel
-void Level::check_end_level() {}
+void Level::draw(Screen &screen_) {
+  screen_.draw("\t"+levelName);
+  screen_.draw();
+  int rows = screen_.getHeight();
+  int cols = screen_.getWidth();
 
-void Level::reset_game() {}
+  screen_.assignEntity(player->getLastPosition(), player->getPosition(),
+                       TileType::PLAYER);
 
-void Level::draw() {
-  // std::cout << "\033[2J\033[1;1H";
-  board->update();
+  for (int i = 0; i < numberEnemies; i++) {
+    Coord position = enemies[i].getPosition();
+
+    if (position.X >= 1 && position.X <= cols && position.Y >= 1 && position.Y <= rows) {
+      screen_.assignEntity(enemies[i].getLastPosition(), enemies[i].getPosition(), TileType::ENEMY);
+    }
+  }
+  
+  screen_.display();
+}
+
+void Level::nextLevel(Screen &screen_) {
+  int width = (screen_.getWidth() + 2);
+  int height = (screen_.getHeight() + 2);
+  screen_.create(width, height);
+}
+
+bool Level::play(Screen & screen_, Player *& player_)
+{
+  this->player->setPosition({ 1, screen_.getHeight() });
+  this->player->reloadBombs(5);
+
+  screen_.generateMap();
+  this->generateEnemy(screen_);
+
+  while (!this->isCompleted) {
+    this->update(screen_);
+    this->checkCollisions(screen_);
+    this->draw(screen_);
+  }
+
+  return this->isCompleted;
 }

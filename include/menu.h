@@ -1,73 +1,30 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef MENU_H_
+#define MENU_H_
 
-#include <iostream>
-using namespace std;
-
-enum MenuState
-{
-    MAIN_MENU = 0,
-    PLAY = 1,
-    RESUME = 2,
-    SAVE = 3,
-    EXIT = 4,
-    GAME_OVER = 5,
-    OUT = 6
-};
+enum MenuState { MAIN_MENU = 0, PLAY, EXIT, NEXT, GAME_OVER, OUT, SAVE = 6 };
 
 class Menu
 {
-    protected:
-        MenuState menuState;
-    public:
-        Menu();
-        ~Menu();
-        MenuState getMenuState();
-        void setMenuState(MenuState);
+  protected:
+    int buttonId;
 
-        virtual void run();
-        virtual void draw();
+    std::vector<Button *> buttons;
+
+    MenuState menuState;
+
+  public:
+    Menu();
+    virtual ~Menu();
+
+    inline int getButtonId() { return this->buttonId; }
+    inline MenuState getMenuState() { return this->menuState; }
+
+    inline void setMenuState(MenuState menuState_) { this->menuState = menuState_; };
+
+    void moveUp();
+    void moveDown(int);
+
+    virtual void run(Screen &) = 0;
 };
 
 #endif
-
-class MainMenu : public Menu
-{
-  public:
-    MainMenu();
-    ~MainMenu();
-
-    void run();
-    void draw();
-};
-
-class Play : public Menu
-{
-    public:
-    Play();
-    ~Play();
-
-    void run();
-    void draw();
-};
-
-class Exit : public Menu
-{
-  public:
-    Exit();
-    ~Exit();
-
-    void run();
-    void draw();
-
-};
-
-class GameOver : public Menu
-{
-  public:
-    GameOver();
-    ~GameOver();
-
-    void run();
-    void draw();
-};
