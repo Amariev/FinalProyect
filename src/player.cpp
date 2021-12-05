@@ -3,7 +3,8 @@
 Player::Player()
 {
   this->numberBombs = 0;
-  this->usedBombs = 0;  
+  this->usedBombs = 0;
+  this->abilityCast = false;
 }
  
 Player::~Player() 

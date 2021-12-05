@@ -25,6 +25,7 @@ class Menu
     void moveDown(int);
 
     virtual void run(Screen &) = 0;
+    virtual void  draw(Screen &) = 0;
 };
 
 #endif

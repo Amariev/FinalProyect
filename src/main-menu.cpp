@@ -63,10 +63,11 @@ void MainMenu::run(Screen & screen_)
     this->draw(screen_);
     screen_.display();
   }
-} 
+}
 
-void MainMenu::draw(Screen & screen_)
+void MainMenu::draw(Screen &screen_) 
 {
+  Menu::draw(screen_);
   for (int i = 0; i < MAIN_MENU_BUTTONS_QUANTITY; ++i)
 	{
 		this->buttons[i]->draw(screen_);
