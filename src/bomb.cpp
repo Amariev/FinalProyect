@@ -6,6 +6,7 @@ Bomb::Bomb()
   this->exploded = false;
   this->time = 0;
   this->tick = 0;
+  this->position = { 0, 0 };
 }
 
 Bomb::~Bomb() 

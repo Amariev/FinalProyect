@@ -2,8 +2,8 @@
 
 Player::Player()
 {
-  this->bombs = new Bomb[this->numberBombs];
-  this->usedBombs = 0;
+  this->numberBombs = 0;
+  this->usedBombs = 0;  
 }
  
 Player::~Player() 
@@ -49,9 +49,7 @@ void Player::update() {
 void Player::castAbility()
 {
   if (this->availableBombs > 0) {
-    if (this->availableBombs) {
-      this->currentBombId = this->availableBombs - 1;
-    }
+    this->currentBombId = this->availableBombs - 1;
 
     this->abilityCast = true;
     this->availableBombs--;
@@ -68,6 +66,9 @@ void Player::setBombPosition(){
 
 void Player::reloadBombs(int numberBombs_)
 {
-  this->availableBombs = numberBombs_;
+  this->numberBombs = numberBombs_;
+  this->usedBombs = 0;
+  this->availableBombs = this->numberBombs;
   this->currentBombId = this->availableBombs - 1; 
+  this->bombs = new Bomb[this->numberBombs];
 }

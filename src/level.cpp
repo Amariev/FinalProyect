@@ -135,8 +135,10 @@ void Level::nextLevel(Screen &screen_) {
 
 bool Level::play(Screen & screen_, Player *& player_)
 {
-  screen_.generateMap();
+  this->player->setPosition({ 1, screen_.getHeight() });
   this->player->reloadBombs(5);
+
+  screen_.generateMap();
   this->generateEnemy(screen_);
 
   while (!this->isCompleted) {
