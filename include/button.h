@@ -11,11 +11,10 @@ class Button
       Button();
       ~Button();
 
-      std::string getText() { return this->icon + " " + this->name; }
+      inline std::string getText() { return this->icon + " " + this->name; }
 
-      void setColor();
-      void setIcon(std::string icon_) { this->icon = icon_; }
-      void setName(const std::string & name_) { this->name = name_; }
+      inline void setIcon(std::string icon_) { this->icon = icon_; }
+      inline void setName(const std::string & name_) { this->name = name_; }
    
       void draw(Screen &);
 };

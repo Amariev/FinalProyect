@@ -1,8 +1,6 @@
 #include "../include/basic.h"
 
-Screen::Screen() { 
-  this->name = "GhostBuster";
-}
+Screen::Screen() { ; }
 
 Screen::~Screen() 
 { 
@@ -22,17 +20,6 @@ void Screen::create(int width_, int height_)
 
   for (int i = 0; i < height_ + 2; ++i)
     this->self[i] = new int[width_ + 2]{};
-}
-
-void Screen::generateTime() 
-{
-  time++;
-  if(time%100 == 0){
-    tick++;
-    if(tick==3){
-      tick=0;
-    }
-  }  
 }
 
 void Screen::generateMap()
@@ -115,12 +102,6 @@ void Screen::draw()
     }
     std::cout << "\n";
   }
-}
-
-void Screen::nextLevel(){
-  height += 2;
-  width += 2;
-  create(width, height);
 }
 
 void Screen::display()
