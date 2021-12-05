@@ -10,8 +10,8 @@ class Ability : public Entity
     Ability();
     ~Ability();
 
-    bool isActive(){ return active; }
-    void setActive(bool active_){ active = active_; }
+    inline bool isActive(){ return active; }
+    inline void setActive(bool active_){ active = active_; }
 };
 
 #endif

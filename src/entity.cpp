@@ -3,5 +3,3 @@
 Entity::Entity() { ; }
 Entity::~Entity() { ; }
 
-bool Entity::destroy() { ; }
-void Entity::update() { ; }

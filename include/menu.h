@@ -16,16 +16,15 @@ class Menu
     Menu();
     virtual ~Menu();
 
-    int getButtonId() { return this->buttonId; }
-    MenuState getMenuState() { return this->menuState; }
+    inline int getButtonId() { return this->buttonId; }
+    inline MenuState getMenuState() { return this->menuState; }
 
-    void setMenuState(MenuState menuState_) { this->menuState = menuState_; };
+    inline void setMenuState(MenuState menuState_) { this->menuState = menuState_; };
 
     void moveUp();
     void moveDown(int);
 
     virtual void run(Screen &) = 0;
-    virtual void draw(Screen &) = 0;
 };
 
 #endif

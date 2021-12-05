@@ -4,11 +4,11 @@
 class NextLevel : public Menu
 {
   public:
-    NextLevel(int);
+    NextLevel();
     ~NextLevel();
 
-    virtual void run(Screen &) final;
-    virtual void draw(Screen &) final;
+    void run(Screen &);
+    void draw(Screen &);
 };
 
 #endif

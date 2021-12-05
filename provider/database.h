@@ -4,7 +4,7 @@
 template<typename T>
 class Database
 {
-  protected:
+  private:
     const std::string fileName;
     const int propertySize;
     Array<T *> source;

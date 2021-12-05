@@ -9,8 +9,8 @@ class GameOver : public Menu
       GameOver();
       ~GameOver();
 
-    void run(Screen &) final;
-    void draw(Screen &) final;
+    void run(Screen &);
+    void draw(Screen &);
 };
 
 #endif

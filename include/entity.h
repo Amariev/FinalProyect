@@ -5,22 +5,13 @@ class Entity
 {
     protected:
       Coord position;
-
-      std::string symbol;
-
+ 
     public:
       Entity();
-      virtual ~Entity();
+      ~Entity();
 
-      Coord getPosition() { return this->position; }
-
-      void setPosition(Coord position_) { this->position = position_; }
-
-      bool destroy();
-  
-      std::string getSymbol() { return this->symbol; }
-
-      virtual void update();
+      inline Coord getPosition() { return this->position; }
+      inline void setPosition(Coord position_) { this->position = position_; }
 };
 
 #endif

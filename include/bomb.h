@@ -3,11 +3,12 @@
 
 class Bomb : public Ability
 {
-  public:
+  private:
     int time;
     int tick;
-    bool exploded;   
+    bool exploded;
 
+  public:
     Bomb();
     ~Bomb();
 

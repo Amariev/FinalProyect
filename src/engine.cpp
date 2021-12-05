@@ -5,7 +5,7 @@ Engine::Engine(Screen &screen_) {
   this->currentLevel = STARTING_LEVEL_NUMBER;
   this->running = false;
 
-  this->player = new Player(5);
+  this->player = new Player();
   this->player->setPosition({ 1, screen_.getHeight() });
   Level *const level1 = new Level(this->player, 5);
   Level *const level2 = new Level(this->player, 6);
@@ -14,6 +14,7 @@ Engine::Engine(Screen &screen_) {
   Level *const level5 = new Level(this->player, 9);
   Level *const level6 = new Level(this->player, 9);
   Level *const level7 = new Level(this->player, 10);
+ 
   this->levels.push_back(level1);
   this->levels.push_back(level2);
   this->levels.push_back(level3);

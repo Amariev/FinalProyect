@@ -8,7 +8,6 @@ class Enemy : public Character
     ~Enemy();
     
     void setRandomDirection();
-    void update();
 };
 
 #endif

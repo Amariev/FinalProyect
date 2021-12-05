@@ -13,12 +13,9 @@ class Character : public Entity
     Character();
     ~Character();
 
-    Coord getLastPosition() { return this->lastPosition; }
-
-
+    inline Coord getLastPosition() { return this->lastPosition; }
     void setDirection(Direction);
     void move();
-    
     void update();
 };
 

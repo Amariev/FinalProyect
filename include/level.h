@@ -20,7 +20,7 @@ class Level
 	  ~Level();
 
     inline void setLevelNumber(unsigned short levelNumber_) { this->levelNumber = levelNumber_; }
-	  inline void setLevelName(const std::string levelName_) { this->levelName = levelName_; }
+    inline void setLevelName(const std::string levelName_) { this->levelName = levelName_; }
 
     void generateEnemy(Screen &);
     void updateLevel(float);

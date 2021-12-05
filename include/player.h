@@ -3,7 +3,7 @@
 
 class Player : public Character
 {
-  protected:
+  private:
     int usedBombs;
     int availableBombs;
     int currentBombId;
@@ -12,20 +12,21 @@ class Player : public Character
     int numberBombs;
 
     public:
-      Player(int);
-      virtual ~Player();
+      Player();
+      ~Player();
       
-      int getUsedBombs() { return this->usedBombs; }
-      Bomb * getBombs() { return this->bombs; }
-      int getAvailableBombs() { return this->availableBombs; }
-      int getCurrentBombId() { return this->currentBombId; }
-      bool isAbilityCast() { return this->abilityCast; }
-      int getTotalBombs() { return this->numberBombs; }
+      inline int getUsedBombs() { return this->usedBombs; }
+      inline Bomb * getBombs() { return this->bombs; }
+      inline int getAvailableBombs() { return this->availableBombs; }
+      inline int getCurrentBombId() { return this->currentBombId; }
+      inline bool isAbilityCast() { return this->abilityCast; }
+      inline int getTotalBombs() { return this->numberBombs; }
 
       void setBombPosition();
-      void setUsedBombs(int usedBombs_) { this->usedBombs = usedBombs_; }
-      void setAvailableBombs(int availableBombs_) { this->availableBombs = availableBombs_; }
-      void setAbilityCast(bool abilityCast_) { this->abilityCast = abilityCast_; }
+      inline void setUsedBombs(int usedBombs_) { this->usedBombs = usedBombs_; }
+      void reloadBombs(int);
+      inline void setAvailableBombs(int availableBombs_) { this->availableBombs = availableBombs_; }
+      inline void setAbilityCast(bool abilityCast_) { this->abilityCast = abilityCast_; }
 
       void update();
       void castAbility();

@@ -1,6 +1,6 @@
 #include "../include/basic.h"
 
-NextLevel::NextLevel(int number_)
+NextLevel::NextLevel()
 {
   ;
 }

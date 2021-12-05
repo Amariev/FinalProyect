@@ -1,13 +1,11 @@
 #include "../include/basic.h"
 
-Player::Player(int numberBombs_): numberBombs(numberBombs_)
+Player::Player()
 {
   this->bombs = new Bomb[this->numberBombs];
   this->usedBombs = 0;
-  this->availableBombs = this->numberBombs;
-  this->currentBombId = this->availableBombs - 1; 
 }
-
+ 
 Player::~Player() 
 {
   delete [] bombs;
@@ -66,5 +64,10 @@ void Player::setBombPosition(){
   int y = this->position.Y;
   bombs[currentBombId].setActive(true);
   bombs[currentBombId].setPosition({x, y});
+}
 
+void Player::reloadBombs(int numberBombs_)
+{
+  this->availableBombs = numberBombs_;
+  this->currentBombId = this->availableBombs - 1; 
 }

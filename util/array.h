@@ -4,7 +4,7 @@
 template<typename T>
 class Array
 {
-  protected:
+  private:
     int size;
     T *data;
 
