@@ -1,20 +1,19 @@
 #include "../include/basic.h"
 #include <string>
 
-Engine::Engine(Screen & screen_)
-{
-  this->totalLevels = LEVELS_QUANTITY;
+Engine::Engine(Screen &screen_) {
   this->currentLevel = STARTING_LEVEL_NUMBER;
   this->running = false;
 
   this->player = new Player(5);
-  Level *const level1 = new Level(screen_, this->player, 5);
-  Level *const level2 = new Level(screen_, this->player, 6);
-  Level *const level3 = new Level(screen_, this->player, 7);
-  Level *const level4 = new Level(screen_, this->player, 8);
-  Level *const level5 = new Level(screen_, this->player, 9);
-  Level *const level6 = new Level(screen_, this->player, 9);
-  Level *const level7 = new Level(screen_, this->player, 10);
+  this->player->setPosition({ 1, screen_.getHeight() });
+  Level *const level1 = new Level(this->player, 5);
+  Level *const level2 = new Level(this->player, 6);
+  Level *const level3 = new Level(this->player, 7);
+  Level *const level4 = new Level(this->player, 8);
+  Level *const level5 = new Level(this->player, 9);
+  Level *const level6 = new Level(this->player, 9);
+  Level *const level7 = new Level(this->player, 10);
   this->levels.push_back(level1);
   this->levels.push_back(level2);
   this->levels.push_back(level3);
@@ -29,46 +28,38 @@ Engine::Engine(Screen & screen_)
     level->setLevelName("Level " + str);
     level->setLevelNumber(cont);
     cont++;
-	}
+  }
 }
 
-Engine::~Engine()
-{
+Engine::~Engine() {
   for (auto l : levels) {
     if (l != nullptr)
       delete l;
   }
   levels.clear();
 
-  if(player!=nullptr)
+  if (player != nullptr)
     delete player;
-
 }
- 
-void Engine::run(Screen & screen_)
-{
+
+void Engine::run(Screen &screen_) {
   this->running = true;
-  for (Level *const level: this->levels)
-  {
-    if (!this->play(screen_, level))
-    {
+  for (Level *const level : this->levels) {
+    if (!this->play(screen_, level)) {
       break;
     }
-    screen_.nextLevel();
+    level->nextLevel(screen_);
   }
   this->running = false;
 }
 
-bool Engine::play(Screen & screen_, Level * level_){
+bool Engine::play(Screen &screen_, Level *level_) {
   bool shouldContinue = false;
 
-  if (level_->play(screen_, this->player))
-  {
+  if (level_->play(screen_, this->player)) {
     this->currentLevel++;
     shouldContinue = true;
-  }
-  else
-  {
+  } else {
     shouldContinue = false;
   }
 

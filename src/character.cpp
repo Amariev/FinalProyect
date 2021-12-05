@@ -25,7 +25,7 @@ void Character::move()
   }
 }
 
-void Character::update()
+void Character::update() 
 {
   this->lastPosition = position;
   switch (this->direction) 

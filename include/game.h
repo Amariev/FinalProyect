@@ -3,9 +3,9 @@
 
 enum GameState { MENU = 0, GAME = 1, GAMEOVER = 2, END = 3};
 
-class Game
+class Game 
 {
-  protected:
+  private:
     Screen & screen;
     Database<Register> *registerDb;
     GameState state;
@@ -14,10 +14,7 @@ class Game
     Game(Screen &);
     ~Game();
 
-    Screen & getScreen() { return this->screen; }
-
-    GameState getState() { return this->state; }
-    void setState(GameState state_) { this->state = state_; }
+    inline void setState(GameState state_) { this->state = state_; }
 
     void run();
     void save();

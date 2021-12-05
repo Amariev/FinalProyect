@@ -1,18 +1,16 @@
 #include "../include/basic.h"
 
-Level::Level(Screen & screen_, Player *& player_, int numberEnemies_) :
-  screen(screen_), player(player_), interface(player_)
+Level::Level(Player *& player_, int numberEnemies_) :
+  player(player_), interface(player_)
 {
 	this->isCompleted = false;
   this->numberEnemies = numberEnemies_;
   this->enemies = new Normal[this->numberEnemies];
-
-  this->player->setPosition({ 1, screen_.getHeight() });
 }
 
 Level::~Level() 
 {
-if(enemies!=nullptr) delete [] enemies;
+  if(enemies!=nullptr) delete [] enemies;
 }
 
 void Level::generateEnemy(Screen & screen_)
@@ -110,7 +108,6 @@ void Level::update(Screen & screen_)
 }
 
 void Level::draw(Screen &screen_) {
-  // std::cout << "\t" << levelName << std::endl;
   screen_.draw("\t"+levelName);
   screen_.draw();
   int rows = screen_.getHeight();
@@ -127,7 +124,13 @@ void Level::draw(Screen &screen_) {
     }
   }
   
-  this->screen.display();
+  screen_.display();
+}
+
+void Level::nextLevel(Screen &screen_) {
+  int width = (screen_.getWidth() + 2);
+  int height = (screen_.getHeight() + 2);
+  screen_.create(width, height);
 }
 
 bool Level::play(Screen & screen_, Player *& player_)
@@ -136,7 +139,6 @@ bool Level::play(Screen & screen_, Player *& player_)
   this->generateEnemy(screen_);
 
   while (!this->isCompleted) {
-    screen_.generateTime();
     this->update(screen_);
     this->checkCollisions(screen_);
     this->draw(screen_);
